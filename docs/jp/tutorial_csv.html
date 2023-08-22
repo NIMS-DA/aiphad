@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>csvファイルを入力した相図作成 &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Webアプリとの対応" href="tutorial_page_type.html" />
+    <link rel="prev" title="一般的なd次元(d変数)の相図を描く" href="tutorial_common.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">はじめに</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">基本的な使用方法</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="chapter3.html">チュートリアル</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_common.html">一般的なd次元(d変数)の相図を描く</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">csvファイルを入力した相図作成</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">csvファイル作成方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">csvファイルを用いた実行方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_page_type.html">Webアプリとの対応</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_input.html">すべての入力オプション</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="chapter3.html">チュートリアル</a></li>
+      <li class="breadcrumb-item active">csvファイルを入力した相図作成</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial_csv.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="csv">
+<h1>csvファイルを入力した相図作成<a class="headerlink" href="#csv" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>csvファイル作成方法<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>入力データを配列として入力するのではなく，用意したcsvファイルを入力して相図作成を実施することができます．
+データを入力する際に用いるcsvファイルの作成方法を紹介します．</p>
+<p>例として，２変数相図を描く場合は下の表のように作成します．</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>X</p></th>
+<th class="head"><p>Y</p></th>
+<th class="head"><p>phase</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>300</p></td>
+<td><p>0</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>300</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>:</p></td>
+<td><p>:</p></td>
+<td><p>:</p></td>
+</tr>
+<tr class="row-odd"><td><p>300</p></td>
+<td><p>10</p></td>
+<td><p>a</p></td>
+</tr>
+<tr class="row-even"><td><p>350</p></td>
+<td><p>0</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>350</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>:</p></td>
+<td><p>:</p></td>
+<td><p>:</p></td>
+</tr>
+<tr class="row-odd"><td><p>350</p></td>
+<td><p>10</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>400</p></td>
+<td><p>0</p></td>
+<td><p>b</p></td>
+</tr>
+<tr class="row-odd"><td><p>400</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>:</p></td>
+<td><p>:</p></td>
+<td><p>:</p></td>
+</tr>
+<tr class="row-odd"><td><p>400</p></td>
+<td><p>10</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>:</p></td>
+<td><p>:</p></td>
+<td><p>:</p></td>
+</tr>
+<tr class="row-odd"><td><p>700</p></td>
+<td><p>0</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>700</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>:</p></td>
+<td><p>:</p></td>
+<td><p>:</p></td>
+</tr>
+<tr class="row-even"><td><p>700</p></td>
+<td><p>10</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>一番上の行には，それぞれの変数の名前を記入できます．
+左から変数の名前を入力します．変数の数を増やす場合，この列を増やす必要があります．
+最後の列にラベル名を表す”phase”と入力します．</p>
+<p>次の段から離散化された相図中の候補点を全て記載します．
+変数の列にはブランクはない状態とします．
+その候補点にラベル名が存在する場合（相が同定されている場合），一番右にそのラベル名を入力します．
+例の場合はa, bと入力していますが，相の名前（テキスト），整数値のインデックス，どちらも指定可能です．
+ただし，整数値を入力しても，テキストとして扱われるため，入力データを配列として入力する場合（<a class="reference internal" href="tutorial_common.html"><span class="doc">一般的なd次元(d変数)の相図を描く</span></a> で扱った場合）とは扱いが異なる点に注意が必要です．</p>
+<p>ラベルの順番は，以下で知ることができます．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;label_name :&quot;</span><span class="p">,</span> <span class="n">pdc</span><span class="o">.</span><span class="n">phase_id_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>csvファイルを用いた実行方法<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>csvファイルを読み込み相図を作成する場合，以下のようにcsvファイルを指定します．
+作成したcsvファイルがdata.csvという場合を表しています．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span> <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>データをあらかじめ指定しているため、 <code class="docutils literal notranslate"><span class="pre">pdc.fit()</span></code> に <code class="docutils literal notranslate"><span class="pre">X</span></code> , <code class="docutils literal notranslate"><span class="pre">y</span></code> を与える必要はありません．
+また，csvファイルに相の名前が記載できるため， <code class="docutils literal notranslate"><span class="pre">phase_id_option</span></code> を用いた名前の指定はできません．</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial_common.html" class="btn btn-neutral float-left" title="一般的なd次元(d変数)の相図を描く" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_page_type.html" class="btn btn-neutral float-right" title="Webアプリとの対応" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_csv.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/tutorial_csv.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/tutorial_csv.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/tutorial_csv.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_csv.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>一般的なd次元(d変数)の相図を描く &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bm": ["{\\boldsymbol{#1}}", 1]}}})</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="csvファイルを入力した相図作成" href="tutorial_csv.html" />
+    <link rel="prev" title="チュートリアル" href="chapter3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">はじめに</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">基本的な使用方法</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="chapter3.html">チュートリアル</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">一般的なd次元(d変数)の相図を描く</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">実験すべき候補点を１つ提案</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">各相の名前を入力</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">１つの実験条件を固定した提案</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">実験すべき候補点を複数提案</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_csv.html">csvファイルを入力した相図作成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_page_type.html">Webアプリとの対応</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_input.html">すべての入力オプション</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="chapter3.html">チュートリアル</a></li>
+      <li class="breadcrumb-item active">一般的なd次元(d変数)の相図を描く</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial_common.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="d-d">
+<h1>一般的なd次元(d変数)の相図を描く<a class="headerlink" href="#d-d" title="Permalink to this heading"></a></h1>
+<p>はじめに，最も一般的な例として，<span class="math notranslate nohighlight">\(d\)</span> 次元(<span class="math notranslate nohighlight">\(d\)</span> 変数)の相図を描く場合について説明します．
+この例では，入力として配列を与え，標準出力に次に実験すべき点を出力します．</p>
+<section id="id1">
+<h2>実験すべき候補点を１つ提案<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>はじめに，AIPHAD内のpdc_samplerをimportします．
+numpyも使用するためimportします．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">aiphad</span> <span class="kn">import</span> <span class="n">pdc_sampler</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>相図推定手法，不確実性スコア，提案数の指定</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">estimation</span></code> : 相図推定手法を選択します．”LP”, “LS”が使用できます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling</span></code> : 不確実性スコアを選択します．”LC”, “MS”, “EA”, “RS”が使用できます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proposal</span></code> : 提案数を指定します．</p></li>
+</ul>
+<p>相図推定手法を”LP”とし，不確実性スコアを”LC”とし，提案数を１とする場合，
+以下のように指定します．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span> <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>さらに詳しい入力オプションについては，<a class="reference internal" href="tutorial_input.html"><span class="doc">すべての入力オプション</span></a> を参照してください．</p>
+<ol class="arabic simple" start="2">
+<li><p>入力配列の指定</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code> : 離散化された相図中の候補点を全て記載します．任意の次元を扱うことができます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> : 離散化された相図中の候補点において，実験結果があり相が同定されている点には相のインデックスを整数で0から順番に記入します．相が同定されていない点には-1を記入します．</p></li>
+</ul>
+<p>例えば以下のように指定します．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+        <span class="p">])</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>相図推定の実行</p></li>
+</ol>
+<p>以下のように <code class="docutils literal notranslate"><span class="pre">pdc.fit()</span></code> 関数を利用することで，入力配列に対して，ラベル伝搬法による相図推定を実施します．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>不確実性スコアの計算</p></li>
+</ol>
+<p>以下のように <code class="docutils literal notranslate"><span class="pre">pdc.us()</span></code> 関数を利用することで，不確実性スコアを計算します．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>相図作成に対して，次に実験すべき候補点の出力</p></li>
+</ol>
+<p>不確実性スコアの計算に従い，次の実験候補を出力します．
+次の実験候補は以下の関数を実行することでリストとして得られます．</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals</span></code> : 次の実験候補として，提案された点の <code class="docutils literal notranslate"><span class="pre">X</span></code> に対するインデックスが取得できます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals_X</span></code> : 次の実験候補として，提案された点の位置（ <code class="docutils literal notranslate"><span class="pre">X</span></code> として入力したもの）が取得できます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals_us</span></code> : 次の実験候補として，提案された点の不確実性スコアが取得できます．</p></li>
+</ul>
+<p>以下のように指定することで，標準出力としてこれらの情報を得ることができます．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proposals_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals</span>
+<span class="n">proposals_X</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals_X</span>
+<span class="n">proposals_us</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals_us</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_index:&quot;</span><span class="p">,</span> <span class="n">proposals_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_X:&quot;</span><span class="p">,</span> <span class="n">proposals_X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_us:&quot;</span><span class="p">,</span> <span class="n">proposals_us</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>以下の結果が出力されます．
+次に実験すべき点は[0.0, 0.0, 0.0]であることがわかります．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proposal_index</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">proposal_X</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">proposal_us</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>各相の所属確率が高い候補点の出力</p></li>
+</ol>
+<p>特に欲しい相がある場合，各相の所属確率が高い候補を出力することができます．
+（詳細な相図を描くための提案ではないことに注意が必要です．）</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.belonging_index</span></code> : 各相の所属確率が高い候補点の <code class="docutils literal notranslate"><span class="pre">X</span></code> に対するインデックスが取得できます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals_X</span></code> : 各相の所属確率が高い候補点の位置（ <code class="docutils literal notranslate"><span class="pre">X</span></code> として入力したもの）が取得できます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals_us</span></code> : 各相の所属確率が高い候補点の所属確率が取得できます．</p></li>
+</ul>
+<p>以下のように指定することで，これらの情報を得ることができます．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">belonging_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_index</span>
+<span class="n">belonging_X</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_X</span>
+<span class="n">belonging_probability</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_probability</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pdc</span><span class="o">.</span><span class="n">phase_id_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_index_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">belonging_index</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_X_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">belonging_X</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_probability_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">belonging_probability</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>以下の結果が出力されます．
+ラベル0の相をもつ候補点として確率の最も高い点は[0.0, 0.0, 0.0]であることを示しています．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">belonging_index_0</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">belonging_X_0</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_0</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="n">belonging_index_1</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">belonging_X_1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_1</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="n">belonging_index_2</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">belonging_X_2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_2</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>未実験点の全不確実性スコアと所属確率</p></li>
+</ol>
+<p>未実験点の全不確実性スコアと所属確率を出力することができます．
+この情報を使うことで，オリジナルの不確実性スコアを計算することもできます．</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.unlabeled_index_list</span></code> : 未実験点のインデックスが格納されています．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.u_score_list</span></code> : 未実験点の不確実性スコアが格納されています．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.label_distributions</span></code> : 未実験点の所属確率が格納されています．相の番号順に出力されます．</p></li>
+</ul>
+<p>以下のように指定することで，これらの情報を得ることができます．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unlabeled_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">unlabeled_index_list</span>
+<span class="n">unlabeled_us</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">u_score_list</span>
+<span class="n">unlabeled_probabilities</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">label_distributions</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unlabeled_index</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;unlabeled_index :&quot;</span><span class="p">,</span> <span class="n">unlabeled_index</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;unlabeled_us_score :&quot;</span><span class="p">,</span> <span class="n">unlabeled_us</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;unlabeled_probabilities :&quot;</span><span class="p">,</span> <span class="n">unlabeled_probabilities</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>以下の結果が出力されます．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unlabeled_index</span> <span class="p">:</span> <span class="mi">0</span>
+<span class="n">unlabeled_us_score</span> <span class="p">:</span> <span class="mf">0.5</span>
+<span class="n">unlabeled_probabilities</span> <span class="p">:</span> <span class="p">[</span><span class="mf">5.00000000e-01</span> <span class="mf">2.70727708e-35</span> <span class="mf">5.00000000e-01</span><span class="p">]</span>
+<span class="n">unlabeled_index</span> <span class="p">:</span> <span class="mi">1</span>
+<span class="n">unlabeled_us_score</span> <span class="p">:</span> <span class="mf">0.0</span>
+<span class="n">unlabeled_probabilities</span> <span class="p">:</span> <span class="p">[</span><span class="mf">2.70727708e-35</span> <span class="mf">1.00000000e+00</span> <span class="mf">6.31697986e-35</span><span class="p">]</span>
+<span class="n">unlabeled_index</span> <span class="p">:</span> <span class="mi">5</span>
+<span class="n">unlabeled_us_score</span> <span class="p">:</span> <span class="mf">0.0</span>
+<span class="n">unlabeled_probabilities</span> <span class="p">:</span> <span class="p">[</span><span class="mf">7.60080658e-70</span> <span class="mf">2.70727708e-35</span> <span class="mf">1.00000000e+00</span><span class="p">]</span>
+<span class="n">unlabeled_index</span> <span class="p">:</span> <span class="mi">6</span>
+<span class="n">unlabeled_us_score</span> <span class="p">:</span> <span class="mf">0.33333333333333337</span>
+<span class="n">unlabeled_probabilities</span> <span class="p">:</span> <span class="p">[</span><span class="mf">3.33333333e-01</span> <span class="mf">6.01617129e-36</span> <span class="mf">6.66666667e-01</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>ハイパーパラメタの調整</p></li>
+</ol>
+<p>相図推定手法の”LP”, “LS”ではいくつかのハイパーパラメタがあります．
+これらは通常デフォルト値が決められており，調整しなくても提案を受けることができます．
+一方で，調整することで，より良い提案を受けることができる場合があります．</p>
+<p>rbfカーネルの <span class="math notranslate nohighlight">\(\gamma\)</span> 値のみ，変更した計算を実行することができます．
+<span class="math notranslate nohighlight">\(\gamma\)</span> の値を10にして計算を行いたい場合，以下のように指定することで計算が行われます．
+またデフォルト値は，20となっています．
+<span class="math notranslate nohighlight">\(\gamma\)</span> は，一つの訓練データが与える影響の範囲に対応しているため，
+<span class="math notranslate nohighlight">\(\gamma\)</span> を小さくすると遠くまで影響を及ぼし，大きくすると近くの影響に留まります．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span> <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>各相の名前を入力<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p>インデックスで指定した相に名前を入力することができます．
+インデックスが0の相の名前をFCCに，1の相の名前をHCPに，2の相の名前をBCCにする場合，
+以下のように指定します．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                   <span class="n">phase_id_option</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;FCC&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;HCP&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;BCC&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+<p>このオプションを指定し，上記2-4に従い計算を実行し，6の出力を実行すると以下の結果が出力されます．
+それぞれの相に名前が指定されていることがわかります．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">belonging_index_FCC</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">belonging_X_FCC</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="n">belonging_index_HCP</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">belonging_X_HCP</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_HCP</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="n">belonging_index_BCC</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">belonging_X_BCC</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>１つの実験条件を固定した提案<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>１つの実験条件を固定することで，次の実験が容易に行える場合があります．
+例えば，温度を固定して，圧力のみを変えた方が実験がしやすい場合などが挙げられます．
+１つ前の実験に対して，１つの実験条件を固定した上で提案を受けることができます．
+<code class="docutils literal notranslate"><span class="pre">proposal</span> <span class="pre">=</span> <span class="pre">1</span></code> の場合にしか利用できません．</p>
+<p>このオプションを利用するためには以下のように設定します．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                   <span class="n">parameter_constraint</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                   <span class="n">prev_point</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">]</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prev_point</span></code> : １つ前の実験条件をリストで入力します．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parameter_constraint</span></code> : Trueにすることで，１つ前の実験条件のうち，１つの実験条件が固定されます．</p></li>
+</ul>
+<p>このオプションを指定し，上記2-5に従い計算を実行すると，以下の結果が得られます．
+次に実験すべき点は[1.0, 1.0, 0.0]であることがわかり， <code class="docutils literal notranslate"><span class="pre">parameter_constraint</span></code> を使わない場合と比べて，
+提案される実験条件が変わっていることが確認できます．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proposal_index</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">proposal_X</span><span class="p">:</span> <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">proposal_us</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.33333333333333337</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>実験すべき候補点を複数提案<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>複数の実験条件を提案させることができます．</p>
+<p>このオプションを利用するためには以下のように設定します．
+<code class="docutils literal notranslate"><span class="pre">proposal</span></code> に提案数を指定することで計算できます．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                   <span class="n">multi_method</span> <span class="o">=</span> <span class="s2">&quot;OU&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">multi_method</span></code> : 複数提案を行うアルゴリズムを選択します．”OU”: 不確実性スコアが大きい順に提案されます．”NE”: 不確実性スコアが大きく，かつそれぞれが離れた候補点が提案されます．何も指定しない場合，”OU”がデフォルトで選択されます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NE_k</span></code> : “NE”を選択した場合に指定する整数値になります．提案された点から第 <code class="docutils literal notranslate"><span class="pre">NE_k</span></code> 近接より近い候補点は提案されないようになります．デフォルトでは1となっています．この場合，最近接に位置する候補点が複数提案されることはなくなります．</p></li>
+</ul>
+<p>このオプションを指定し，上記2-5に従い計算を実行すると，以下の結果が出力されます．
+次に実験すべき点は[[0.0, 0.0, 0.0], [1.0, 0.0, 1.0]]であることがわかります．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proposal_index</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">proposal_X</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">proposal_us</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.33333333333333337</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>また，各相の所属確率が高い候補点も複数提案させることができます．</p>
+<p>上記2-6に従い計算を実行すると，以下の結果が得られます．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">belonging_index_0</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">belonging_X_0</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_0</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3333333333333333</span><span class="p">]</span>
+<span class="n">belonging_index_1</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">belonging_X_1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_1</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.707277081768123e-35</span><span class="p">]</span>
+<span class="n">belonging_index_2</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">belonging_X_2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_2</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.6666666666666666</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter3.html" class="btn btn-neutral float-left" title="チュートリアル" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_csv.html" class="btn btn-neutral float-right" title="csvファイルを入力した相図作成" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_common.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/tutorial_common.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/tutorial_common.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/tutorial_common.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_common.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

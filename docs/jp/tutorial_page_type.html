@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webアプリとの対応 &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="すべての入力オプション" href="tutorial_input.html" />
+    <link rel="prev" title="csvファイルを入力した相図作成" href="tutorial_csv.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">はじめに</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">基本的な使用方法</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="chapter3.html">チュートリアル</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_common.html">一般的なd次元(d変数)の相図を描く</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_csv.html">csvファイルを入力した相図作成</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Webアプリとの対応</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">３成分系等温断面図の例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">配列で入力する場合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">ラベルを入力するとき</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">出力のオプション</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_input.html">すべての入力オプション</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="chapter3.html">チュートリアル</a></li>
+      <li class="breadcrumb-item active">Webアプリとの対応</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial_page_type.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="web">
+<h1>Webアプリとの対応<a class="headerlink" href="#web" title="Permalink to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">page_type</span></code> を利用することで，Webアプリ(<a class="reference external" href="https://aiphad.org/">https://aiphad.org/</a>)と対応させることができます．
+このオプションを用いると，予測相図の描画，不確実スコアの描画が可能となります．</p>
+<p><code class="docutils literal notranslate"><span class="pre">page_type</span></code> は以下のように指定します．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;data.csv&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+<p>ここで指定できる <code class="docutils literal notranslate"><span class="pre">page_type</span></code> は以下の通りです．</p>
+<ul class="simple">
+<li><p>“two_variables”: ２変数相図</p></li>
+<li><p>“three_variables”: ３変数相図</p></li>
+<li><p>“ternary_section”: ３成分系等温断面図</p></li>
+<li><p>“ternary”: ３成分系相図</p></li>
+<li><p>“quaternary_section”: ４成分系相図</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">input_data</span></code> にcsvファイルを入力する場合，
+<code class="docutils literal notranslate"><span class="pre">page_type</span></code> に指定したものと対応したファイルを用いる必要があります．</p>
+<section id="id1">
+<h2>３成分系等温断面図の例<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>ここでは基本的な例として，３成分系等温断面図(“ternary_section”)の計算を行う場合を利用して説明します．
+３成分系等温断面図の計算を行うためには， <code class="docutils literal notranslate"><span class="pre">page_type</span></code> に”ternary_section”を指定します．
+この例では，入力はcsvファイルを与え，図を画面に出力します．</p>
+<p>まず，以下のようにimportします．
+aiphad.aiphad_outputをインポートすることで，相図を可視化することができます．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">aiphad</span> <span class="kn">import</span> <span class="n">pdc_sampler</span>
+<span class="kn">from</span> <span class="nn">aiphad.aiphad_output</span> <span class="kn">import</span> <span class="n">plot_out</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>pythonコードを以下のように記述します．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;data_ternary_section.csv&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">5</span>
+                   <span class="p">)</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">)</span>
+
+<span class="n">proposals_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals</span>
+<span class="n">proposals_X</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals_X</span>
+<span class="n">proposals_us</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals_us</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_index:&quot;</span><span class="p">,</span> <span class="n">proposals_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_X:&quot;</span><span class="p">,</span> <span class="n">proposals_X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_us:&quot;</span><span class="p">,</span> <span class="n">proposals_us</span><span class="p">)</span>
+
+<span class="n">belonging_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_index</span>
+<span class="n">belonging_X</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_X</span>
+<span class="n">belonging_probability</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_probability</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pdc</span><span class="o">.</span><span class="n">phase_id_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_index_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="n">belonging_index</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_X_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="n">belonging_X</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_probability_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="n">belonging_probability</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>ここで， <code class="docutils literal notranslate"><span class="pre">input_data</span></code> で指定したサンプルファイル”data_ternary_section.csv”は同じディレクトリにおきます．</p>
+<p>このPythonコードを実行すると， <code class="docutils literal notranslate"><span class="pre">plot_out(pdc)</span></code> により初めに図が出力されます．
+以下の３つの図が連続して出力されます．</p>
+<ul class="simple">
+<li><p>Checked Points: すでに相が同定されている点が表示されます．</p></li>
+</ul>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_Checked_points.png"><img alt="_images/Sample_Checked_points.png" src="_images/Sample_Checked_points.png" style="width: 75%;" /></a>
+</figure>
+<ul class="simple">
+<li><p>Uncertainty Score: 各点の不確実性スコアが表示されます．</p></li>
+</ul>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_Uncertainty_score.png"><img alt="_images/Sample_Uncertainty_score.png" src="_images/Sample_Uncertainty_score.png" style="width: 75%;" /></a>
+</figure>
+<ul class="simple">
+<li><p>Estimated: 推定された予測相図が表示されます．</p></li>
+</ul>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_Estimated.png"><img alt="_images/Sample_Estimated.png" src="_images/Sample_Estimated.png" style="width: 75%;" /></a>
+</figure>
+<p>また， <code class="docutils literal notranslate"><span class="pre">proposals_index</span> <span class="pre">=</span> <span class="pre">pdc.proposals</span></code> 以下で提案点に関する標準出力が得られ，
+以下の結果が出力されます．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proposal_index</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">68</span><span class="p">]</span>
+<span class="n">proposal_X</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]]</span>
+<span class="n">proposal_us</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.7709398033192086</span><span class="p">,</span> <span class="mf">0.7544588069243133</span><span class="p">,</span> <span class="mf">0.6973660798457375</span><span class="p">,</span> <span class="mf">0.672971896254403</span><span class="p">,</span> <span class="mf">0.6686665138608043</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.3429449861197492</span><span class="p">,</span> <span class="mf">0.22906019668079136</span><span class="p">,</span> <span class="mf">0.22780732387481817</span><span class="p">,</span> <span class="mf">0.16103851775328806</span><span class="p">,</span> <span class="mf">0.14859411204017348</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5084664081602635</span><span class="p">,</span> <span class="mf">0.28798785026363194</span><span class="p">,</span> <span class="mf">0.27569943113302103</span><span class="p">,</span> <span class="mf">0.2723156235415327</span><span class="p">,</span> <span class="mf">0.2279684961916743</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">87</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.41641112113329276</span><span class="p">,</span> <span class="mf">0.3728917200950976</span><span class="p">,</span> <span class="mf">0.3463926061024242</span><span class="p">,</span> <span class="mf">0.27514637238539996</span><span class="p">,</span> <span class="mf">0.261158293406579</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">49</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.4564878867105817</span><span class="p">,</span> <span class="mf">0.30263392015426255</span><span class="p">,</span> <span class="mf">0.024008972043743384</span><span class="p">,</span> <span class="mf">0.021434082521362623</span><span class="p">,</span> <span class="mf">0.021049644410128583</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.4390658028550059</span><span class="p">,</span> <span class="mf">0.026249838699062628</span><span class="p">,</span> <span class="mf">0.014755934814926938</span><span class="p">,</span> <span class="mf">0.010435952482010182</span><span class="p">,</span> <span class="mf">0.007072722883750504</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">58</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.9794365586180334</span><span class="p">,</span> <span class="mf">0.9754613868466422</span><span class="p">,</span> <span class="mf">0.9745978351147191</span><span class="p">,</span> <span class="mf">0.971462452609113</span><span class="p">,</span> <span class="mf">0.963904881503319</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.22508194319872216</span><span class="p">,</span> <span class="mf">0.16911835513190335</span><span class="p">,</span> <span class="mf">0.0763326785917378</span><span class="p">,</span> <span class="mf">0.04446756734348071</span><span class="p">,</span> <span class="mf">0.012293537080480565</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">28</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.327028103745597</span><span class="p">,</span> <span class="mf">0.20879579727515543</span><span class="p">,</span> <span class="mf">0.08199753318407586</span><span class="p">,</span> <span class="mf">0.03698335729588441</span><span class="p">,</span> <span class="mf">0.027629089037503673</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.2818915371917155</span><span class="p">,</span> <span class="mf">0.23520760088877765</span><span class="p">,</span> <span class="mf">0.20596735819215564</span><span class="p">,</span> <span class="mf">0.15735127720827985</span><span class="p">,</span> <span class="mf">0.094689344987573</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">121</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">148</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8322472777083684</span><span class="p">,</span> <span class="mf">0.8221340993971477</span><span class="p">,</span> <span class="mf">0.8002307618798112</span><span class="p">,</span> <span class="mf">0.797664402594447</span><span class="p">,</span> <span class="mf">0.784769760536253</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.028945840490463882</span><span class="p">,</span> <span class="mf">0.028515902638765824</span><span class="p">,</span> <span class="mf">0.024011902210446447</span><span class="p">,</span> <span class="mf">0.02312600262738925</span><span class="p">,</span> <span class="mf">0.02156548592795092</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">68</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.6109220585078707</span><span class="p">,</span> <span class="mf">0.4105500666597589</span><span class="p">,</span> <span class="mf">0.37487447088734216</span><span class="p">,</span> <span class="mf">0.37452268512936004</span><span class="p">,</span> <span class="mf">0.33133348613919567</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">66</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">84</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.6516583590609779</span><span class="p">,</span> <span class="mf">0.6208135568903499</span><span class="p">,</span> <span class="mf">0.5986016823494428</span><span class="p">,</span> <span class="mf">0.5502934531848476</span><span class="p">,</span> <span class="mf">0.5177065740489881</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.29954454085365223</span><span class="p">,</span> <span class="mf">0.18113174228070997</span><span class="p">,</span> <span class="mf">0.18039040498458211</span><span class="p">,</span> <span class="mf">0.07334520526507098</span><span class="p">,</span> <span class="mf">0.061454313319613256</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">203</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">195</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8486182900941895</span><span class="p">,</span> <span class="mf">0.832701029603124</span><span class="p">,</span> <span class="mf">0.8210606957416035</span><span class="p">,</span> <span class="mf">0.8148741219420823</span><span class="p">,</span> <span class="mf">0.785430794433471</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>次に，提案された点が，相図のどこに位置しているかを，
+Webアプリ版も利用しながら見ていきます．</p>
+<p>今回，例として使用した入力データは，完全な相図がわかっており，相図は以下になります．
+これはWebアプリで描きました．</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_Goal.PNG"><img alt="_images/Sample_web_Goal.PNG" src="_images/Sample_web_Goal.PNG" style="width: 85%;" /></a>
+</figure>
+<p>この相図の相境界を示すと，以下のようになります．</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_compare_1.PNG"><img alt="_images/Sample_web_compare_1.PNG" src="_images/Sample_web_compare_1.PNG" style="width: 75%;" /></a>
+</figure>
+<p>Pythonコードで出力した <code class="docutils literal notranslate"><span class="pre">proposal_index</span></code> ， <code class="docutils literal notranslate"><span class="pre">proposal_X</span></code> は，
+次の実験候補となる提案点となります．
+同じ条件で，10点の候補をWebアプリ上で計算すると，緑の丸番号が提案点として出力されます．
+Python版とWebアプリ版で同じ場所が次の実験候補として提案されていることがわかります．</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_Checked_points.png"><img alt="_images/Sample_web_Checked_points.png" src="_images/Sample_web_Checked_points.png" style="width: 75%;" /></a>
+</figure>
+<p>さらに，この提案点の図と，完全な相図の相境界を比較として重ねると，
+以下のように提案点が相境界の近くに位置していることが分かります．
+つまり，この提案に従い実験を実施することで，相境界を正確に決めることができることがわかります．</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_compare_2.png"><img alt="_images/Sample_web_compare_2.png" src="_images/Sample_web_compare_2.png" style="width: 75%;" /></a>
+</figure>
+<p>また，不確実性スコアの分布と，完全な相図の相境界線を比較すると以下のようになります．</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_compare_3.png"><img alt="_images/Sample_web_compare_3.png" src="_images/Sample_web_compare_3.png" style="width: 75%;" /></a>
+</figure>
+<p>Webアプリ版では，Probabiltyの箇所で各相に所属する確率の高い実験条件を以下のように出力することができます．</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_Probability-1.png"><img alt="_images/Sample_web_Probability-1.png" src="_images/Sample_web_Probability-1.png" style="width: 75%;" /></a>
+</figure>
+<p>これらは，Python版で標準出力した <code class="docutils literal notranslate"><span class="pre">belonging_index</span></code> ， <code class="docutils literal notranslate"><span class="pre">belonging_X</span></code> ， <code class="docutils literal notranslate"><span class="pre">belonging_probability</span></code> に対応しています．</p>
+</section>
+<section id="id2">
+<h2>配列で入力する場合<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">page_type</span></code> を指定した場合も配列としてデータを入力することができます．
+<code class="docutils literal notranslate"><span class="pre">page_type</span></code> に指定したものと対応した配列を入力してください．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.50</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.50</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">])</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code> : 離散化された相図中の候補点を全て記載します．任意の次元を扱うことができます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> : 離散化された相図中の候補点において，実験結果があり相が同定されている点には相のインデックスを0から順に整数で記入します．相が同定されていない点には-1を記入します．</p></li>
+</ul>
+<p>出力結果は以下の通りです．</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/array_Checked_points.png"><img alt="_images/array_Checked_points.png" src="_images/array_Checked_points.png" style="width: 75%;" /></a>
+</figure>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/array_Uncertainty_score.png"><img alt="_images/array_Uncertainty_score.png" src="_images/array_Uncertainty_score.png" style="width: 75%;" /></a>
+</figure>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/array_Estimated.png"><img alt="_images/array_Estimated.png" src="_images/array_Estimated.png" style="width: 75%;" /></a>
+</figure>
+<p>ラベルが入力されなかった場合は，この図のように0から連番で自動的にラベルが生成されます．</p>
+</section>
+<section id="id3">
+<h2>ラベルを入力するとき<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>配列で入力した場合，任意のラベルを入力することができます．
+任意のラベルを入力する場合， <code class="docutils literal notranslate"><span class="pre">phase_id_option</span></code> を使用し，以下のように指定します．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">phase_id_option</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span>
+                   <span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.50</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.50</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">])</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">phase_id_option</span></code> : 配列yの0,1,2の要素に対応するように，{“a”: 0 ,”b”: 1 ,”c”: 2 }とラベルを記述します．</p></li>
+</ul>
+<p>出力結果は以下の通りです．</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/label_Checked_points.png"><img alt="_images/label_Checked_points.png" src="_images/label_Checked_points.png" style="width: 75%;" /></a>
+</figure>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/label_Uncertainty_score.png"><img alt="_images/label_Uncertainty_score.png" src="_images/label_Uncertainty_score.png" style="width: 75%;" /></a>
+</figure>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/label_Estimated.png"><img alt="_images/label_Estimated.png" src="_images/label_Estimated.png" style="width: 75%;" /></a>
+</figure>
+</section>
+<section id="id4">
+<h2>出力のオプション<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<p>AIPHADでは３種類の図を出力することができます．</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Checked_points</span></code> : すでに相が同定されている点が表示されます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Uncertainty_score</span></code> : 不確実性スコアが表示されます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Estimated</span></code> : 推定された相図が表示されます．</p></li>
+</ul>
+<p>図の出力は，以下の２種類の方法があります．</p>
+<ul class="simple">
+<li><p>図の出力をそのままデスクトップに表示する．</p></li>
+<li><p>図を画像として保存する．</p></li>
+</ul>
+<p>図の出力は <code class="docutils literal notranslate"><span class="pre">plot_out(pdc)</span></code> で行います．
+オプションの指定がない場合，デフォルトでは図がそのままデスクトップに表示するようになっています．以下に例を示します．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;example_ternary_iso.csv&quot;</span><span class="p">,</span>
+                   <span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">3</span>
+                   <span class="p">)</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>図を画像として保存する場合，以下のようにオプションを入力します．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;example_ternary_iso.csv&quot;</span><span class="p">,</span>
+                   <span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">3</span>
+                   <span class="p">)</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">,</span> <span class="n">elev_num</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">azim_num</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">directory_name</span> <span class="o">=</span> <span class="s2">&quot;./out1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>各オプションの説明は以下の通りです．</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">save_fig</span></code> : 図を画像として保存する場合True，図をデスクトップにそのまま出力する場合Falseを指定します．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elev_num</span></code> : 3次元の図の場合，z軸から見た仰角を指定できます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">azim_num</span></code> : 3次元の図の場合，x, y軸方向の方位角を指定できます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extension</span></code> : 画像の拡張子を指定できます．png, jpgまたはpdfを指定することができます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">directory_name</span></code> : 保存先のディレクトリを指定します．このフォルダの中に <code class="docutils literal notranslate"><span class="pre">page_type</span></code> で指定した名前のフォルダが作成され，その中に図が出力されます．</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial_csv.html" class="btn btn-neutral float-left" title="csvファイルを入力した相図作成" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_input.html" class="btn btn-neutral float-right" title="すべての入力オプション" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_page_type.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/tutorial_page_type.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/tutorial_page_type.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/tutorial_page_type.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_page_type.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

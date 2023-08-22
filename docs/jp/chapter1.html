@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>はじめに &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="基本的な使用方法" href="chapter2.html" />
+    <link rel="prev" title="Welcome to AIPHAD’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">はじめに</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#aiphad">AIPHAD とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">AIPHAD の引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">主な開発者</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">ライセンス</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">基本的な使用方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">はじめに</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/chapter1.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>はじめに<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="aiphad">
+<h2>AIPHAD とは<a class="headerlink" href="#aiphad" title="Permalink to this heading"></a></h2>
+<p>AIPHAD(Artificial intelligence techniques for PHAse diagram)プロジェクトでは，
+人工知能・機械学習を利用することで，実験回数をできるだけ少なくし，
+詳細な相図・状態図を描くために，「次の実験点」を適切に提案する手法を開発しました．</p>
+<p>AIPHADライブラリでは，
+PDC(Phase Diagram Constructionn)をアルゴリズムとして利用した相図作成が実施できます．
+具体的には，相図中で相が同定されている点の情報を入力すると，
+ラベル伝搬法（label propagation/label spreading methods）をラベル推定アルゴリズムとして利用することで，
+まだ相が同定されていない部分の相図を予測することができます．
+この結果を元に，相図中で最も不確かな部分が，次の実験条件候補として選定されます．
+提案点における実験を実施し，相を同定することで学習データが増加し，PDCによって新しい実験条件候補が提案されます．
+この繰り返し操作を実行することで，高速に相境界を知ることができたり，新しい相を高速に発見できたりします．</p>
+<p>本ライブラリの特徴は以下になります．</p>
+<ul class="simple">
+<li><p>任意の次元を持つ実験条件に対する相図作成が可能</p></li>
+<li><p>ラベル推定アルゴリズム/不確実性スコアが容易に変更可能</p></li>
+<li><p>複数の実験条件候補点を提案可能</p></li>
+<li><p>予測相図を画像として出力可能</p></li>
+<li><p>指定した相の出現確率が高い実験条件候補点を提案可能</p></li>
+</ul>
+<p>また，本ライブラリと対応関係のある，相図状態作成用WebアプリAIPHAD <a class="reference external" href="https://aiphad.org/">https://aiphad.org/</a> を公開しています．
+このWebアプリを利用することで，プログラミングに馴染みがない研究者・技術者でも容易にPDCを利用した相図作成が可能となります．</p>
+<p>技術的な詳細については， <a class="reference external" href="https://www.jstage.jst.go.jp/article/oubutsu/91/2/91_96/_pdf/-char/ja">こちらの文献</a>
+を参照して下さい．</p>
+</section>
+<section id="id3">
+<h2>AIPHAD の引用<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<p>AIPHAD，PDCを利用する際には，以下の文献を引用してください，</p>
+<p>Kei Terayama, Ryo Tamura, Yoshitaro Nose, Hidenori Hiramatsu, Hideo Hosono, Yasushi Okuno, and Koji Tsuda,
+“Efficient construction method for phase diagrams using uncertainty sampling”,
+Physical Review Materials 3, 033802 (2019).
+DOI: 10.1103/PhysRevMaterials.3.033802</p>
+<p>Available from <a class="reference external" href="https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.3.033802">https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.3.033802</a> (open access).</p>
+<p>Bibtexは以下の通りです．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">PhysRevMaterials</span><span class="mf">.3.033802</span><span class="p">,</span>
+<span class="n">title</span> <span class="o">=</span> <span class="p">{</span><span class="n">Efficient</span> <span class="n">construction</span> <span class="n">method</span> <span class="k">for</span> <span class="n">phase</span> <span class="n">diagrams</span> <span class="n">using</span> <span class="n">uncertainty</span> <span class="n">sampling</span><span class="p">},</span>
+<span class="n">author</span> <span class="o">=</span> <span class="p">{</span><span class="n">Terayama</span><span class="p">,</span> <span class="n">Kei</span> <span class="ow">and</span> <span class="n">Tamura</span><span class="p">,</span> <span class="n">Ryo</span> <span class="ow">and</span> <span class="n">Nose</span><span class="p">,</span> <span class="n">Yoshitaro</span> <span class="ow">and</span> <span class="n">Hiramatsu</span><span class="p">,</span> <span class="n">Hidenori</span> <span class="ow">and</span> <span class="n">Hosono</span><span class="p">,</span> <span class="n">Hideo</span> <span class="ow">and</span> <span class="n">Okuno</span><span class="p">,</span> <span class="n">Yasushi</span> <span class="ow">and</span> <span class="n">Tsuda</span><span class="p">,</span> <span class="n">Koji</span><span class="p">},</span>
+<span class="n">journal</span> <span class="o">=</span> <span class="p">{</span><span class="n">Phys</span><span class="o">.</span> <span class="n">Rev</span><span class="o">.</span> <span class="n">Mater</span><span class="o">.</span><span class="p">},</span>
+<span class="n">volume</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">},</span>
+<span class="n">issue</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">},</span>
+<span class="n">pages</span> <span class="o">=</span> <span class="p">{</span><span class="mi">033802</span><span class="p">},</span>
+<span class="n">numpages</span> <span class="o">=</span> <span class="p">{</span><span class="mi">8</span><span class="p">},</span>
+<span class="n">year</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2019</span><span class="p">},</span>
+<span class="n">month</span> <span class="o">=</span> <span class="p">{</span><span class="n">Mar</span><span class="p">},</span>
+<span class="n">publisher</span> <span class="o">=</span> <span class="p">{</span><span class="n">American</span> <span class="n">Physical</span> <span class="n">Society</span><span class="p">},</span>
+<span class="n">doi</span> <span class="o">=</span> <span class="p">{</span><span class="mf">10.1103</span><span class="o">/</span><span class="n">PhysRevMaterials</span><span class="mf">.3.033802</span><span class="p">},</span>
+<span class="n">url</span> <span class="o">=</span> <span class="p">{</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">link</span><span class="o">.</span><span class="n">aps</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">doi</span><span class="o">/</span><span class="mf">10.1103</span><span class="o">/</span><span class="n">PhysRevMaterials</span><span class="mf">.3.033802</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>複数実験条件提案を利用する際には，以下の文献を引用してください，</p>
+<p>Ryo Tamura, Guillaume Deffrennes, Kwangsik Han, Taichi Abe, Haruhiko Morito, Yasuyuki Nakamura, Masanobu Naito, Ryoji Katsube, Yoshitaro Nose, and Kei Terayama,
+“Machine-learning-based phase diagram construction for high-throughput batch experiments”,
+Science and Technology of Advanced Materials: Methods 2, 153-161 (2022).
+DOI: 10.1080/27660400.2022.2076548</p>
+<p>Available from <a class="reference external" href="https://www.tandfonline.com/doi/full/10.1080/27660400.2022.2076548">https://www.tandfonline.com/doi/full/10.1080/27660400.2022.2076548</a> (open access).</p>
+<p>Bibtexは以下の通りです．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">doi</span><span class="p">:</span><span class="mf">10.1080</span><span class="o">/</span><span class="mf">27660400.2022.2076548</span><span class="p">,</span>
+<span class="n">author</span> <span class="o">=</span> <span class="p">{</span><span class="n">Ryo</span> <span class="n">Tamura</span> <span class="ow">and</span> <span class="n">Guillaume</span> <span class="n">Deffrennes</span> <span class="ow">and</span> <span class="n">Kwangsik</span> <span class="n">Han</span> <span class="ow">and</span> <span class="n">Taichi</span> <span class="n">Abe</span> <span class="ow">and</span> <span class="n">Haruhiko</span> <span class="n">Morito</span> <span class="ow">and</span> <span class="n">Yasuyuki</span> <span class="n">Nakamura</span> <span class="ow">and</span> <span class="n">Masanobu</span> <span class="n">Naito</span> <span class="ow">and</span> <span class="n">Ryoji</span> <span class="n">Katsube</span> <span class="ow">and</span> <span class="n">Yoshitaro</span> <span class="n">Nose</span> <span class="ow">and</span> <span class="n">Kei</span> <span class="n">Terayama</span><span class="p">},</span>
+<span class="n">title</span> <span class="o">=</span> <span class="p">{</span><span class="n">Machine</span><span class="o">-</span><span class="n">Learning</span><span class="o">-</span><span class="n">Based</span> <span class="n">phase</span> <span class="n">diagram</span> <span class="n">construction</span> <span class="k">for</span> <span class="n">high</span><span class="o">-</span><span class="n">throughput</span> <span class="n">batch</span> <span class="n">experiments</span><span class="p">},</span>
+<span class="n">journal</span> <span class="o">=</span> <span class="p">{</span><span class="n">Science</span> <span class="ow">and</span> <span class="n">Technology</span> <span class="n">of</span> <span class="n">Advanced</span> <span class="n">Materials</span><span class="p">:</span> <span class="n">Methods</span><span class="p">},</span>
+<span class="n">volume</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">},</span>
+<span class="n">number</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">},</span>
+<span class="n">pages</span> <span class="o">=</span> <span class="p">{</span><span class="mi">153</span><span class="o">-</span><span class="mi">161</span><span class="p">},</span>
+<span class="n">year</span>  <span class="o">=</span> <span class="p">{</span><span class="mi">2022</span><span class="p">},</span>
+<span class="n">publisher</span> <span class="o">=</span> <span class="p">{</span><span class="n">Taylor</span> <span class="o">&amp;</span> <span class="n">Francis</span><span class="p">},</span>
+<span class="n">doi</span> <span class="o">=</span> <span class="p">{</span><span class="mf">10.1080</span><span class="o">/</span><span class="mf">27660400.2022.2076548</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>主な開発者<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>ver. 1.0-</p>
+<ul>
+<li><p>田村 亮 (物質・材料研究機構 マテリアル基盤研究センター)</p></li>
+<li><p>寺山 慧 (横浜市立大学大学院 生命医科学研究科)</p></li>
+<li><p>冨永 直利 (アドバンスソフト株式会社)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h2>ライセンス<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>本ソフトウェアのプログラムパッケージおよびソースコード一式はMIT Licenseに準じて配布しています．</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to AIPHAD’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter2.html" class="btn btn-neutral float-right" title="基本的な使用方法" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/chapter1.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/chapter1.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/chapter1.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/chapter1.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/chapter1.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

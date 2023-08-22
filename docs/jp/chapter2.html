@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>基本的な使用方法 &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bm": ["{\\boldsymbol{#1}}", 1]}}})</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="チュートリアル" href="chapter3.html" />
+    <link rel="prev" title="はじめに" href="chapter1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">はじめに</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">基本的な使用方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">チュートリアル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">謝辞</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">基本的な使用方法</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/chapter2.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><section id="id1">
+<h1>基本的な使用方法<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h1>
+<section id="id2">
+<h2>インストール<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+<section id="id3">
+<h3>実行環境・必要なパッケージ<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>AIPHADの実行環境・必要なパッケージは以下の通りです．</p>
+<ul class="simple">
+<li><p>Python &gt;= 3.6</p></li>
+<li><p>numpy == 1.18.5</p></li>
+<li><p>matplotlib == 3.2.2</p></li>
+<li><p>scipy == 1.5.0</p></li>
+<li><p>scikit-learn == 0.23.1</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>ダウンロード・インストール<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PyPI</span></code> からのインストール（推奨）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install aiphad
+</pre></div>
+</div>
+<ul>
+<li><p>NumPy などの依存パッケージも同時にインストールされます．</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--user</span></code> オプションを追加するとユーザのホームディレクトリ以下にインストールされます．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install --user aiphad
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>ソースコードからのインストール（開発者向け）</p>
+<ol class="arabic">
+<li><p>本体のダウンロード</p>
+<p>ソースファイルをダウンロードするか，以下のように github レポジトリをクローンしてください．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/tsudalab/aiphad
+</pre></div>
+</div>
+</li>
+<li><p>pip を 19.0 以上に更新</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install -U pip
+
+- ここで ``pip3`` が入っていない場合には ``python3 -m ensurepip`` でインストール可能です
+</pre></div>
+</div>
+</li>
+<li><p>インストール</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd aiphad
+$ pip3 install --user ./
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h3>アンインストール<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>以下のコマンドを実行します．</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip uninstall aiphad
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="aiphad">
+<h2>AIPHADの基本構造<a class="headerlink" href="#aiphad" title="Permalink to this heading"></a></h2>
+<p>AIPHADは以下のような構成になっています(第3階層まで表示)．:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|--</span><span class="n">aiphad</span>
+<span class="o">|</span>    <span class="o">|--</span><span class="n">aiphad</span><span class="o">.</span><span class="n">pdc_sampler</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">fit</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">us</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">cross_selection</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">make_data</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">make_label</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">preprocessing</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">calculate</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">postprocessing</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">us_</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>各モジュールは以下のような構成で作成されています．</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.fit</span></code> : ラベル推定計算モジュール</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.us</span></code> : 不確実性スコア計算モジュール</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.cross_selection</span></code> : １変数を固定した場合の計算モジュール</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.make_data</span></code> : データ読み込みモジュール</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.make_label</span></code> : ラベル作成モジュール</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.preprocessing</span></code> : 前処理モジュール</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.calculate</span></code> : ラベル伝搬手法計算モジュール</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.postprocessing</span></code> : 後処理モジュール</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.us_*</span></code> : 不確実性スコアの計算モジュール（不確実性スコアの定義に応じた関数であり， <code class="docutils literal notranslate"><span class="pre">*</span></code> にはEA等が入る）</p></li>
+</ul>
+<p>各モジュールの詳細については <a class="reference internal" href="api_reference.html"><span class="doc">API Reference</span></a> を参考にしてください．</p>
+</section>
+<section id="pdc">
+<h2>PDCにおける計算の流れ<a class="headerlink" href="#pdc" title="Permalink to this heading"></a></h2>
+<p>PDCを用いることで，相図を書くための実験回数を減らすことができ，さらに未知の相も効率的に発見することができます．PDCでは，以下の手順により不確実性サンプリングを実行します(それぞれの詳細は <a class="reference internal" href="chapter3.html"><span class="doc">チュートリアル</span></a> および <a class="reference internal" href="api_reference.html"><span class="doc">API Reference</span></a> を参考にしてください)．</p>
+<ol class="arabic simple">
+<li><p>描きたい相図の空間を定義</p></li>
+</ol>
+<p>相図を描きたい空間を用意し，それを離散的に分割します．
+分割された点の数を:math:<cite>N</cite>  とすると， <span class="math notranslate nohighlight">\(N\)</span>  個の実験条件に対して実験を全て行えば，詳細な相図が得られることになります．
+離散化された位置ベクトルを <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^d\)</span> とすると，描きたい相図の実験条件候補は <span class="math notranslate nohighlight">\(\mathbf{\{ x_\it i \}_{i= \rm 1,\ldots ,N} }\)</span> で表されることになります．
+このとき，相図を描きたい空間次元 <span class="math notranslate nohighlight">\(d\)</span> は任意となります．</p>
+<p>この <span class="math notranslate nohighlight">\(N\)</span> 個の実験条件のうち， <span class="math notranslate nohighlight">\(M\)</span> 個の実験条件の実験が終わっており，その点における相の種類が同定できているとします．
+この段階で見つかっている相のそれぞれのデータ点には，数値インデックスをラベルとして付与します．
+例えば，見つかっている相の種類が <span class="math notranslate nohighlight">\(P\)</span> だった場合，相の種類を表すインデックスとして， <span class="math notranslate nohighlight">\(p = 1, \ldots ,P\)</span> を用意し，各データのラベルとして付与します．
+このとき，まだ実験を行っていない実験条件に対しては， <span class="math notranslate nohighlight">\(-1\)</span> のラベルを付与します．</p>
+<ol class="arabic simple" start="2">
+<li><p>相図推定 (phase estimation)</p></li>
+</ol>
+<p>まだ相が同定されていない相図中の各点に対して，すでに見つかっている相に対する所属確率 <span class="math notranslate nohighlight">\(P(p|\mathbf{x})\)</span> をラベル伝搬法により推定します．PDCでは以下２種類のラベル伝搬法から選択します．</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LP</span></code> : label propagation法による所属確率計算</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LS</span></code> : label spreading法による所属確率計算</p></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">LP</span></code> ではすでに相が同定されている点の相情報は不変なのに対し， <code class="docutils literal notranslate"><span class="pre">LS</span></code> では，相情報が周囲の環境によって変化する点が特徴的です．</p>
+<p>この確率を利用し，各点で確率が最大となる相を予想される相とすることで，推定相図を描くことができます．</p>
+<ol class="arabic simple" start="3">
+<li><p>不確実性スコア (uncertainty score)</p></li>
+</ol>
+<p>ステップ2で出力された所属確率を用いて，不確実性スコア (uncertainty score)を計算します．このスコアが最も大きくなる点（相図中で最も不確かな点）を，次の実験条件候補点として提案します．PDCでは，不確実性スコアの定義として，以下の4種類のスコアが利用できます．</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LC</span></code> : least confidentによる不確実性スコア ( <span class="math notranslate nohighlight">\(1-P(p_1|\mathbf{x})\)</span> )</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EA</span></code> : entropy-based approachによる不確実性スコア ( <span class="math notranslate nohighlight">\(1-[P(p_1|\mathbf{x})-P(p_2|\mathbf{x})]\)</span> )</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MS</span></code> : margin samplingによる不確実性スコア ( <span class="math notranslate nohighlight">\(- \sum_{p} P(p|\mathbf{x})\log {P(p|\mathbf{x})}\)</span> )</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RS</span></code> : random samplingによる不確実性スコア</p></li>
+</ul>
+</div></blockquote>
+<p>ただし， <span class="math notranslate nohighlight">\(P(p_1|\mathbf{x})\)</span> および  <span class="math notranslate nohighlight">\(P(p_2|\mathbf{x})\)</span> は，点 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> において最大の確率をもつ相の所属確率と，2番めに高い確率をもつ所属確率をそれぞれ表します．
+このとき，複数の実験条件候補を提案することもできます．</p>
+<ol class="arabic simple" start="4">
+<li><p>実験 (experiment)</p></li>
+</ol>
+<p>ステップ3で選定された不確実性スコアが最大となる点に対して実験を行い，相を同定します．そして，同定された相のインデックスをその点のラベルとして入力します．このとき，新しい相が見つかった場合，相を表すインデックスを1つ追加し，新しいデータ点にラベルをつけます．</p>
+<p>これにより学習データが追加され，このデータを利用し，ステップ2に戻り，ステップ2～4を繰り返すことで相図を効率的に描くことができます．
+以上の流れを図示したものが以下になります．</p>
+<figure class="align-center">
+<img alt="_images/cycle.png" src="_images/cycle.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter1.html" class="btn btn-neutral float-left" title="はじめに" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter3.html" class="btn btn-neutral float-right" title="チュートリアル" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/chapter2.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/chapter2.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/chapter2.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/chapter2.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/chapter2.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

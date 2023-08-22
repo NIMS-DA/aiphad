@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Correspondence with web applications &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="All options for input" href="tutorial_input.html" />
+    <link rel="prev" title="Phase diagram construction using a csv file" href="tutorial_csv.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">Basic usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="chapter3.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_common.html">General d-dimensional (d-variable) phase diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_csv.html">Phase diagram construction using a csv file</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Correspondence with web applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-for-ternary-section">Example for ternary section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inputting-as-an-array">Inputting as an array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specifying-a-label">Specifying a label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-options">Output options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_input.html">All options for input</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">Acknowledgment</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="chapter3.html">Tutorial</a></li>
+      <li class="breadcrumb-item active">Correspondence with web applications</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="correspondence-with-web-applications">
+<h1>Correspondence with web applications<a class="headerlink" href="#correspondence-with-web-applications" title="Permalink to this heading"></a></h1>
+<p>By using <code class="docutils literal notranslate"><span class="pre">page_type</span></code>, we can make it compatible with the web application (<a class="reference external" href="https://aiphad.org/">https://aiphad.org/</a>).
+Using this option, it is possible to obtain the figures of predicted phase diagrams and uncertainty scores.</p>
+<p><code class="docutils literal notranslate"><span class="pre">page_type</span></code> is specified as follows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;data.csv&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">page_type</span></code> that can be specified here is as follows.</p>
+<ul class="simple">
+<li><p>“two_variables”: Diagrams with 2 variables</p></li>
+<li><p>“three_variables”: Diagrams with 3 variables</p></li>
+<li><p>“ternary_section”: Phase diagrams for ternary section</p></li>
+<li><p>“ternary”: Phase diagrams for ternary</p></li>
+<li><p>“quaternary_section”: Phase diagrams for quaternary section</p></li>
+</ul>
+<p>When inputting a csv file to <code class="docutils literal notranslate"><span class="pre">input_data</span></code>,
+we need to use a file that corresponds to the one specified in <code class="docutils literal notranslate"><span class="pre">page_type</span></code>.</p>
+<section id="example-for-ternary-section">
+<h2>Example for ternary section<a class="headerlink" href="#example-for-ternary-section" title="Permalink to this heading"></a></h2>
+<p>Here, as a basic example, we will explain using the case of the ternary section (“ternary_section”).
+We specify “ternary_section” for <code class="docutils literal notranslate"><span class="pre">page_type</span></code> to investigate the phase diagram of a ternary isothermal section.
+In this example, the input is given as a csv file and the figure is output to the screen.</p>
+<p>Import modules are as follows.
+We can visualize the phase diagram by importing aiphad.aiphad_output.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">aiphad</span> <span class="kn">import</span> <span class="n">pdc_sampler</span>
+<span class="kn">from</span> <span class="nn">aiphad.aiphad_output</span> <span class="kn">import</span> <span class="n">plot_out</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>The python code is written as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;data_ternary_section.csv&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">5</span>
+                   <span class="p">)</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">)</span>
+
+<span class="n">proposals_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals</span>
+<span class="n">proposals_X</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals_X</span>
+<span class="n">proposals_us</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals_us</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_index:&quot;</span><span class="p">,</span> <span class="n">proposals_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_X:&quot;</span><span class="p">,</span> <span class="n">proposals_X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_us:&quot;</span><span class="p">,</span> <span class="n">proposals_us</span><span class="p">)</span>
+
+<span class="n">belonging_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_index</span>
+<span class="n">belonging_X</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_X</span>
+<span class="n">belonging_probability</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_probability</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pdc</span><span class="o">.</span><span class="n">phase_id_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_index_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="n">belonging_index</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_X_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="n">belonging_X</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_probability_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="n">belonging_probability</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The sample csv file of “data_ternary_section.csv” specified in <code class="docutils literal notranslate"><span class="pre">input_data</span></code> is stored in the same directory of the python script.</p>
+<p>When we execute this Python code, <code class="docutils literal notranslate"><span class="pre">plot_out(pdc)</span></code> will output the figure.
+The following three figures are output in succession.</p>
+<ul class="simple">
+<li><p>Checked Points: Points with already identified phases are displayed.</p></li>
+</ul>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_Checked_points.png"><img alt="_images/Sample_Checked_points.png" src="_images/Sample_Checked_points.png" style="width: 75%;" /></a>
+</figure>
+<ul class="simple">
+<li><p>Uncertainty Score: Uncertainty score for each point is displayed.</p></li>
+</ul>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_Uncertainty_score.png"><img alt="_images/Sample_Uncertainty_score.png" src="_images/Sample_Uncertainty_score.png" style="width: 75%;" /></a>
+</figure>
+<ul class="simple">
+<li><p>Estimated: Estimated phase diagram is displayed.</p></li>
+</ul>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_Estimated.png"><img alt="_images/Sample_Estimated.png" src="_images/Sample_Estimated.png" style="width: 75%;" /></a>
+</figure>
+<p>In addition, below the code of <code class="docutils literal notranslate"><span class="pre">proposals_index</span> <span class="pre">=</span> <span class="pre">pdc.proposals</span></code> , the standard output about the proposal points is obtained as follows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proposal_index</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">68</span><span class="p">]</span>
+<span class="n">proposal_X</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]]</span>
+<span class="n">proposal_us</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.7709398033192086</span><span class="p">,</span> <span class="mf">0.7544588069243133</span><span class="p">,</span> <span class="mf">0.6973660798457375</span><span class="p">,</span> <span class="mf">0.672971896254403</span><span class="p">,</span> <span class="mf">0.6686665138608043</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.3429449861197492</span><span class="p">,</span> <span class="mf">0.22906019668079136</span><span class="p">,</span> <span class="mf">0.22780732387481817</span><span class="p">,</span> <span class="mf">0.16103851775328806</span><span class="p">,</span> <span class="mf">0.14859411204017348</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5084664081602635</span><span class="p">,</span> <span class="mf">0.28798785026363194</span><span class="p">,</span> <span class="mf">0.27569943113302103</span><span class="p">,</span> <span class="mf">0.2723156235415327</span><span class="p">,</span> <span class="mf">0.2279684961916743</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">87</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.41641112113329276</span><span class="p">,</span> <span class="mf">0.3728917200950976</span><span class="p">,</span> <span class="mf">0.3463926061024242</span><span class="p">,</span> <span class="mf">0.27514637238539996</span><span class="p">,</span> <span class="mf">0.261158293406579</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">49</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.4564878867105817</span><span class="p">,</span> <span class="mf">0.30263392015426255</span><span class="p">,</span> <span class="mf">0.024008972043743384</span><span class="p">,</span> <span class="mf">0.021434082521362623</span><span class="p">,</span> <span class="mf">0.021049644410128583</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.4390658028550059</span><span class="p">,</span> <span class="mf">0.026249838699062628</span><span class="p">,</span> <span class="mf">0.014755934814926938</span><span class="p">,</span> <span class="mf">0.010435952482010182</span><span class="p">,</span> <span class="mf">0.007072722883750504</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">58</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.9794365586180334</span><span class="p">,</span> <span class="mf">0.9754613868466422</span><span class="p">,</span> <span class="mf">0.9745978351147191</span><span class="p">,</span> <span class="mf">0.971462452609113</span><span class="p">,</span> <span class="mf">0.963904881503319</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.22508194319872216</span><span class="p">,</span> <span class="mf">0.16911835513190335</span><span class="p">,</span> <span class="mf">0.0763326785917378</span><span class="p">,</span> <span class="mf">0.04446756734348071</span><span class="p">,</span> <span class="mf">0.012293537080480565</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">28</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.327028103745597</span><span class="p">,</span> <span class="mf">0.20879579727515543</span><span class="p">,</span> <span class="mf">0.08199753318407586</span><span class="p">,</span> <span class="mf">0.03698335729588441</span><span class="p">,</span> <span class="mf">0.027629089037503673</span><span class="p">]</span>
+<span class="n">belonging_index_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
+<span class="n">belonging_X_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.2818915371917155</span><span class="p">,</span> <span class="mf">0.23520760088877765</span><span class="p">,</span> <span class="mf">0.20596735819215564</span><span class="p">,</span> <span class="mf">0.15735127720827985</span><span class="p">,</span> <span class="mf">0.094689344987573</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">121</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">148</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8322472777083684</span><span class="p">,</span> <span class="mf">0.8221340993971477</span><span class="p">,</span> <span class="mf">0.8002307618798112</span><span class="p">,</span> <span class="mf">0.797664402594447</span><span class="p">,</span> <span class="mf">0.784769760536253</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.028945840490463882</span><span class="p">,</span> <span class="mf">0.028515902638765824</span><span class="p">,</span> <span class="mf">0.024011902210446447</span><span class="p">,</span> <span class="mf">0.02312600262738925</span><span class="p">,</span> <span class="mf">0.02156548592795092</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">68</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.6109220585078707</span><span class="p">,</span> <span class="mf">0.4105500666597589</span><span class="p">,</span> <span class="mf">0.37487447088734216</span><span class="p">,</span> <span class="mf">0.37452268512936004</span><span class="p">,</span> <span class="mf">0.33133348613919567</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mi">66</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">84</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="o">+</span><span class="n">SIGMA</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.6516583590609779</span><span class="p">,</span> <span class="mf">0.6208135568903499</span><span class="p">,</span> <span class="mf">0.5986016823494428</span><span class="p">,</span> <span class="mf">0.5502934531848476</span><span class="p">,</span> <span class="mf">0.5177065740489881</span><span class="p">]</span>
+<span class="n">belonging_index_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+<span class="n">belonging_X_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]]</span>
+<span class="n">belonging_probability_SIGMA</span><span class="o">+</span><span class="n">BCC_A2</span><span class="o">+</span><span class="n">FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.29954454085365223</span><span class="p">,</span> <span class="mf">0.18113174228070997</span><span class="p">,</span> <span class="mf">0.18039040498458211</span><span class="p">,</span> <span class="mf">0.07334520526507098</span><span class="p">,</span> <span class="mf">0.061454313319613256</span><span class="p">]</span>
+<span class="n">belonging_index_FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mi">203</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">196</span><span class="p">,</span> <span class="mi">197</span><span class="p">,</span> <span class="mi">195</span><span class="p">]</span>
+<span class="n">belonging_X_FCC_A1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC_A1</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.8486182900941895</span><span class="p">,</span> <span class="mf">0.832701029603124</span><span class="p">,</span> <span class="mf">0.8210606957416035</span><span class="p">,</span> <span class="mf">0.8148741219420823</span><span class="p">,</span> <span class="mf">0.785430794433471</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Next,
+we will look at the results while using the web application version.</p>
+<p>For the input data used as an example here, the complete phase diagram is known and the phase diagram is as follows.
+I drew this with a web application.</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_Goal.PNG"><img alt="_images/Sample_web_Goal.PNG" src="_images/Sample_web_Goal.PNG" style="width: 85%;" /></a>
+</figure>
+<p>The phase boundary of this phase diagram is shown as follows.</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_compare_1.PNG"><img alt="_images/Sample_web_compare_1.PNG" src="_images/Sample_web_compare_1.PNG" style="width: 75%;" /></a>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">proposal_index</span></code> and <code class="docutils literal notranslate"><span class="pre">proposal_X</span></code> outputed by the Python code are the proposal points for the next experiment.
+Under the same conditions, when 10 candidate points are calculated on the web application, green circle numbers are output as proposed points.
+We can see that the same points are proposed as candidates for the next experiment in the Python version and the web application version.</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_Checked_points.png"><img alt="_images/Sample_web_Checked_points.png" src="_images/Sample_web_Checked_points.png" style="width: 75%;" /></a>
+</figure>
+<p>Furthermore, when the figure of this proposed point and the phase boundary of the complete phase diagram are overlaid for comparison,
+it can be seen that the proposed points are located near the phase boundary, as shown below.
+In other words, the phase boundary can be determined accurately by conducting experiments according to these proposals.</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_compare_2.png"><img alt="_images/Sample_web_compare_2.png" src="_images/Sample_web_compare_2.png" style="width: 75%;" /></a>
+</figure>
+<p>The distribution of uncertainty scores with the phase boundaries of the complete phase diagram is as follows.</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_compare_3.png"><img alt="_images/Sample_web_compare_3.png" src="_images/Sample_web_compare_3.png" style="width: 75%;" /></a>
+</figure>
+<p>In the web application version, we can obtain the experimental conditions with a high probability of belonging to each phase as follows.</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/Sample_web_Probability-1.png"><img alt="_images/Sample_web_Probability-1.png" src="_images/Sample_web_Probability-1.png" style="width: 75%;" /></a>
+</figure>
+<p>These correspond to <code class="docutils literal notranslate"><span class="pre">belonging_index</span></code>, <code class="docutils literal notranslate"><span class="pre">belonging_X</span></code>, and <code class="docutils literal notranslate"><span class="pre">belonging_probability</span></code> in the standard output of the Python version.</p>
+</section>
+<section id="inputting-as-an-array">
+<h2>Inputting as an array<a class="headerlink" href="#inputting-as-an-array" title="Permalink to this heading"></a></h2>
+<p>Data can also be input as an array when <code class="docutils literal notranslate"><span class="pre">page_type</span></code> is specified.
+An array corresponding to the one specified in <code class="docutils literal notranslate"><span class="pre">page_type</span></code> is inputed as follows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.50</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.50</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">])</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code> : All candidate points in the discretized phase diagram are described. It can handle arbitrary dimensions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> : The phase index is putted in order from 0 at the point where the phase is already identified. For the points where the phase is not identified, the phase index -1 is specified.</p></li>
+</ul>
+<p>The output result is as follows.</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/array_Checked_points.png"><img alt="_images/array_Checked_points.png" src="_images/array_Checked_points.png" style="width: 75%;" /></a>
+</figure>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/array_Uncertainty_score.png"><img alt="_images/array_Uncertainty_score.png" src="_images/array_Uncertainty_score.png" style="width: 75%;" /></a>
+</figure>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/array_Estimated.png"><img alt="_images/array_Estimated.png" src="_images/array_Estimated.png" style="width: 75%;" /></a>
+</figure>
+<p>If no label is specified, a label is automatically generated with a serial number starting from 0 as shown in the above figure.</p>
+</section>
+<section id="specifying-a-label">
+<h2>Specifying a label<a class="headerlink" href="#specifying-a-label" title="Permalink to this heading"></a></h2>
+<p>When inputting as an array, any label can be input.
+If we want to enter an arbitrary label, <code class="docutils literal notranslate"><span class="pre">phase_id_option</span></code> can be used as follows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">phase_id_option</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span>
+                   <span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.50</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.50</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">])</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">phase_id_option</span></code> : Write {“a”: 0 ,”b”: 1 ,”c”: 2 } to correspond to 0, 1, 2 in the array <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+</ul>
+<p>The output result is as follows.</p>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/label_Checked_points.png"><img alt="_images/label_Checked_points.png" src="_images/label_Checked_points.png" style="width: 75%;" /></a>
+</figure>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/label_Uncertainty_score.png"><img alt="_images/label_Uncertainty_score.png" src="_images/label_Uncertainty_score.png" style="width: 75%;" /></a>
+</figure>
+<figure class="align-center align-default">
+<a class="reference internal image-reference" href="_images/label_Estimated.png"><img alt="_images/label_Estimated.png" src="_images/label_Estimated.png" style="width: 75%;" /></a>
+</figure>
+</section>
+<section id="output-options">
+<h2>Output options<a class="headerlink" href="#output-options" title="Permalink to this heading"></a></h2>
+<p>AIPHAD can output three types of figures.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Checked_points</span></code> : Points with already identified phases are displayed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Uncertainty_score</span></code> : Uncertainty score for each point is displayed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Estimated</span></code> : Estimated phase diagram is displayed.</p></li>
+</ul>
+<p>There are two ways to output figures.</p>
+<ul class="simple">
+<li><p>Display the output of the figure on the desktop.</p></li>
+<li><p>Save the figure as an image.</p></li>
+</ul>
+<p>To output the figure, <code class="docutils literal notranslate"><span class="pre">plot_out(pdc)</span></code> is used.
+If no option is specified, the figure is displayed on the desktop by default.
+An example is shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;example_ternary_iso.csv&quot;</span><span class="p">,</span>
+                   <span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">3</span>
+                   <span class="p">)</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To save the figure as an image, the following options is used.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;example_ternary_iso.csv&quot;</span><span class="p">,</span>
+                   <span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">3</span>
+                   <span class="p">)</span>
+
+<span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+
+<span class="n">plot_out</span><span class="p">(</span><span class="n">pdc</span><span class="p">,</span> <span class="n">elev_num</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">azim_num</span> <span class="o">=</span> <span class="mi">45</span><span class="p">,</span> <span class="n">save_fig</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">directory_name</span> <span class="o">=</span> <span class="s2">&quot;./out1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An explanation of each option is as follows.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">save_fig</span></code> : To save the figure as an image, “True” is specified, and “False” is specified to output the figure to the desktop.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elev_num</span></code> : For 3D figures, we can specify the elevation angle relative to the z-axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">azim_num</span></code> : For 3D figures, we can specify the azimuth along the x and y axes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extension</span></code> : We can specify the extension of the image. We can specify png, jpg, or pdf.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">directory_name</span></code> : The save directory is specified. A folder with the name specified by <code class="docutils literal notranslate"><span class="pre">page_type</span></code> will be created in this folder, and the figure will be output in that folder.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial_csv.html" class="btn btn-neutral float-left" title="Phase diagram construction using a csv file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_input.html" class="btn btn-neutral float-right" title="All options for input" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_page_type.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/tutorial_page_type.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/tutorial_page_type.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/tutorial_page_type.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_page_type.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

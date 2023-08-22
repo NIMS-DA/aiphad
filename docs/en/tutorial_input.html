@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All options for input &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bm": ["{\\boldsymbol{#1}}", 1]}}})</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Materials Search Space Generator" href="materials_search_space.html" />
+    <link rel="prev" title="Correspondence with web applications" href="tutorial_page_type.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">Basic usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="chapter3.html">Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial_common.html">General d-dimensional (d-variable) phase diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_csv.html">Phase diagram construction using a csv file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_page_type.html">Correspondence with web applications</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">All options for input</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">Acknowledgment</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="chapter3.html">Tutorial</a></li>
+      <li class="breadcrumb-item active">All options for input</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="all-options-for-input">
+<h1>All options for input<a class="headerlink" href="#all-options-for-input" title="Permalink to this heading"></a></h1>
+<p>Here, all options for input are summarized.
+These input options correspond to the arguments of the <code class="docutils literal notranslate"><span class="pre">pdc_sampler</span></code> instance in the following Python code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">aiphad</span> <span class="kn">import</span> <span class="n">pdc_sampler</span>
+
+<span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">page_type</span> <span class="o">=</span> <span class="s2">&quot;ternary_section&quot;</span><span class="p">,</span>
+                   <span class="n">input_data</span> <span class="o">=</span> <span class="s2">&quot;data.csv&quot;</span><span class="p">,</span>
+                   <span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">gamma</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">phase_id_option</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;FCC&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;HCP&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;BCC&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">3</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+<p>The input of data has the following options.</p>
+<ul class="simple">
+<li><p>A csv file is specified as variable <code class="docutils literal notranslate"><span class="pre">input_data</span></code> .</p></li>
+<li><p>Input data is specified as arrays <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> .</p></li>
+</ul>
+<p>In each case, the minimum required variables are as follows.
+〇 indicates a required item, and × indicates an item that cannot be specified.
+Items marked with △ can be handled with either option.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>variable</p></td>
+<td><p>csv file as input data</p></td>
+<td><p>arrays as input data</p></td>
+<td><p>explanation</p></td>
+</tr>
+<tr class="row-even"><td><p>page_type</p></td>
+<td><p>△</p></td>
+<td><p>△</p></td>
+<td><p>Enter the type of phase diagram corresponding to the web application version. If not, the figure cannot be outputed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>input_data</p></td>
+<td><p>〇</p></td>
+<td><p>×</p></td>
+<td><p>Enter the file name when inputting a csv file.</p></td>
+</tr>
+<tr class="row-even"><td><p>estimation</p></td>
+<td><p>〇</p></td>
+<td><p>〇</p></td>
+<td><p>Specify the LP or LS methods.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sampling</p></td>
+<td><p>〇</p></td>
+<td><p>〇</p></td>
+<td><p>Specify LC, MS, EA, or RS methods．</p></td>
+</tr>
+<tr class="row-even"><td><p>phase_id_option</p></td>
+<td><p>×</p></td>
+<td><p>△</p></td>
+<td><p>Specify phase name.</p></td>
+</tr>
+<tr class="row-odd"><td><p>proposal</p></td>
+<td><p>〇</p></td>
+<td><p>〇</p></td>
+<td><p>Specify the number of proposals.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following are variables that can be specified as options.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>variable</p></td>
+<td><p>csv file as input data</p></td>
+<td><p>arrays as input data</p></td>
+<td><p>explanation</p></td>
+</tr>
+<tr class="row-even"><td><p>gamma</p></td>
+<td><p>△</p></td>
+<td><p>△</p></td>
+<td><p>Specify <span class="math notranslate nohighlight">\(\gamma\)</span> of the rbf kernel used in the phase diagram estimation method.</p></td>
+</tr>
+<tr class="row-odd"><td><p>parameter_constraint</p></td>
+<td><p>△</p></td>
+<td><p>△</p></td>
+<td><p>Set to True to fix one variable from previous experimental condition. By default, False is selected.</p></td>
+</tr>
+<tr class="row-even"><td><p>prev_point</p></td>
+<td><p>△</p></td>
+<td><p>△</p></td>
+<td><p>When fixing one variable, enter the previous proposal points as a list.</p></td>
+</tr>
+<tr class="row-odd"><td><p>multi_method</p></td>
+<td><p>△</p></td>
+<td><p>△</p></td>
+<td><p>Select either OU or NE when proposal is 2 or more. OU is selected by default.</p></td>
+</tr>
+<tr class="row-even"><td><p>NE_k</p></td>
+<td><p>△</p></td>
+<td><p>△</p></td>
+<td><p>When NE is selected with multi_method, entier the value of NE_k. Candidate points closer than the NE_k nearest from the proposed point will not be proposed.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial_page_type.html" class="btn btn-neutral float-left" title="Correspondence with web applications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="materials_search_space.html" class="btn btn-neutral float-right" title="Materials Search Space Generator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_input.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/tutorial_input.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/tutorial_input.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/tutorial_input.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_input.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

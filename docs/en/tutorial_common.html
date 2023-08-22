@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General d-dimensional (d-variable) phase diagram &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bm": ["{\\boldsymbol{#1}}", 1]}}})</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Phase diagram construction using a csv file" href="tutorial_csv.html" />
+    <link rel="prev" title="Tutorial" href="chapter3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">Basic usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="chapter3.html">Tutorial</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">General d-dimensional (d-variable) phase diagram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#suggest-one-experimental-point-to-be-tested">Suggest one experimental point to be tested</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specifying-the-name-of-each-phase">Specifying the name of each phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#proposal-when-one-experimental-condition-is-fixed">Proposal when one experimental condition is fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#proposal-of-multiple-candidate-points">Proposal of multiple candidate points</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_csv.html">Phase diagram construction using a csv file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_page_type.html">Correspondence with web applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_input.html">All options for input</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">Acknowledgment</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="chapter3.html">Tutorial</a></li>
+      <li class="breadcrumb-item active">General d-dimensional (d-variable) phase diagram</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="general-d-dimensional-d-variable-phase-diagram">
+<h1>General d-dimensional (d-variable) phase diagram<a class="headerlink" href="#general-d-dimensional-d-variable-phase-diagram" title="Permalink to this heading"></a></h1>
+<p>Here,
+the most common example is investigating a <span class="math notranslate nohighlight">\(d\)</span> dimensional (<span class="math notranslate nohighlight">\(d\)</span> variable) phase diagram.
+In this example, we use an array as input and output the next experimental point on standard output.</p>
+<section id="suggest-one-experimental-point-to-be-tested">
+<h2>Suggest one experimental point to be tested<a class="headerlink" href="#suggest-one-experimental-point-to-be-tested" title="Permalink to this heading"></a></h2>
+<p>First, pdc_sampler in AIPHAD is imported.
+In addition, numpy must be imported as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">aiphad</span> <span class="kn">import</span> <span class="n">pdc_sampler</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Specify phase diagram estimation method, uncertainty score, number of proposals</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">estimation</span></code> : Phase diagram estimation method is specified. “LP”, “LS” can be selected.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling</span></code> : Uncertainty score is specified. “LC”, “MS”, “EA”, “RS” can be selected.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">proposal</span></code> : Number of proposals is specified.</p></li>
+</ul>
+<p>If “LP” is used as estimation method, “LC” is used as uncertainty score, and the number of proposals is 1,
+the python code is written as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span> <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="tutorial_input.html"><span class="doc">All options for input</span></a> for more input options.</p>
+<ol class="arabic simple" start="2">
+<li><p>Specify input arrays</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code> : All candidate points in the discretized phase diagram are described. It can handle arbitrary dimensions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> : The phase index is putted in order from 0 at the point where the phase is already identified. For the points where the phase is not identified, the phase index -1 is specified.</p></li>
+</ul>
+<p>For example, the imput arrays are specified as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">0.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">,</span><span class="mf">1.00</span><span class="p">],</span>
+        <span class="p">])</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Perform phase diagram estimation</p></li>
+</ol>
+<p>By using the <code class="docutils literal notranslate"><span class="pre">pdc.fit()</span></code> function as follows, the phase diagram is estimated by the label propagation method for the input arrays.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Calculate uncertainty score</p></li>
+</ol>
+<p>By using the <code class="docutils literal notranslate"><span class="pre">pdc.us()</span></code> function as follows, the calculation of the uncertainty score is performed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span><span class="o">.</span><span class="n">us</span><span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Output next candidate points to be tested</p></li>
+</ol>
+<p>The next candidate experiments are suggested according to the calculated uncertainty score.
+Candidates for the next experiment can be obtained as a list by executing the following function.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals</span></code> : As a candidate for the next experiment, we can get the index of the proposed point relative to <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals_X</span></code> : As a candidate for the next experiment, we can get the position of the proposed point (i.e. <code class="docutils literal notranslate"><span class="pre">X</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals_us</span></code> : We can get the uncertainty score of each selected experimental point.</p></li>
+</ul>
+<p>By specifying as follows, we can get these information as standard output.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proposals_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals</span>
+<span class="n">proposals_X</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals_X</span>
+<span class="n">proposals_us</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">proposals_us</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_index:&quot;</span><span class="p">,</span> <span class="n">proposals_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_X:&quot;</span><span class="p">,</span> <span class="n">proposals_X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;proposal_us:&quot;</span><span class="p">,</span> <span class="n">proposals_us</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The following result is output.
+The next experimental point is suggested as [0.0, 0.0, 0.0].</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proposal_index</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">proposal_X</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">proposal_us</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Output candidate points with the high belonging probability to each phase</p></li>
+</ol>
+<p>If there is an desired phase, AIPHAD can output candidates with a high belonging probability to each phase.
+Note that this is not a proposal for investigating a detailed phase diagram.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.belonging_index</span></code> : We can get the index for <code class="docutils literal notranslate"><span class="pre">X</span></code> of the candidate point with high probability of belonging to each phase.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals_X</span></code> : We can get the position (input as <code class="docutils literal notranslate"><span class="pre">X</span></code>) of the candidate point with high probability of belonging to each phase.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.proposals_us</span></code> : We can get the belonging probability of candidate points with high belonging probability of each phase.</p></li>
+</ul>
+<p>By specifying as follows, we can get these information as standard output.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">belonging_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_index</span>
+<span class="n">belonging_X</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_X</span>
+<span class="n">belonging_probability</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">belonging_probability</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">pdc</span><span class="o">.</span><span class="n">phase_id_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_index_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">belonging_index</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_X_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">belonging_X</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;belonging_probability_</span><span class="si">{}</span><span class="s2">:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">belonging_probability</span><span class="p">[</span><span class="n">value</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The following result is output.
+It shows that the point with the highest belonging probability for label 0 is [0.0, 0.0, 0.0].</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">belonging_index_0</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">belonging_X_0</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_0</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="n">belonging_index_1</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">belonging_X_1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_1</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="n">belonging_index_2</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">belonging_X_2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_2</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Output all uncertainty scores and probabilities</p></li>
+</ol>
+<p>We can obtain the uncertainty scores and belonging probabilities of all points.
+Using these information, we can implement the original uncertainty score.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.unlabeled_index_list</span></code> : Indexes of points where the phase is not identified are stored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.u_score_list</span></code> : Uncertainty scores of points where the phase is not identified are stored.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pdc.label_distributions</span></code> : Belonging probabilities of points where the phase is not identified are stored. They are output in order of phase index.</p></li>
+</ul>
+<p>By specifying as follows, we can get these information as standard output.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unlabeled_index</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">unlabeled_index_list</span>
+<span class="n">unlabeled_us</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">u_score_list</span>
+<span class="n">unlabeled_probabilities</span> <span class="o">=</span> <span class="n">pdc</span><span class="o">.</span><span class="n">label_distributions</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">unlabeled_index</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;unlabeled_index :&quot;</span><span class="p">,</span> <span class="n">unlabeled_index</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;unlabeled_us_score :&quot;</span><span class="p">,</span> <span class="n">unlabeled_us</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;unlabeled_probabilities :&quot;</span><span class="p">,</span> <span class="n">unlabeled_probabilities</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The following result is output.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unlabeled_index</span> <span class="p">:</span> <span class="mi">0</span>
+<span class="n">unlabeled_us_score</span> <span class="p">:</span> <span class="mf">0.5</span>
+<span class="n">unlabeled_probabilities</span> <span class="p">:</span> <span class="p">[</span><span class="mf">5.00000000e-01</span> <span class="mf">2.70727708e-35</span> <span class="mf">5.00000000e-01</span><span class="p">]</span>
+<span class="n">unlabeled_index</span> <span class="p">:</span> <span class="mi">1</span>
+<span class="n">unlabeled_us_score</span> <span class="p">:</span> <span class="mf">0.0</span>
+<span class="n">unlabeled_probabilities</span> <span class="p">:</span> <span class="p">[</span><span class="mf">2.70727708e-35</span> <span class="mf">1.00000000e+00</span> <span class="mf">6.31697986e-35</span><span class="p">]</span>
+<span class="n">unlabeled_index</span> <span class="p">:</span> <span class="mi">5</span>
+<span class="n">unlabeled_us_score</span> <span class="p">:</span> <span class="mf">0.0</span>
+<span class="n">unlabeled_probabilities</span> <span class="p">:</span> <span class="p">[</span><span class="mf">7.60080658e-70</span> <span class="mf">2.70727708e-35</span> <span class="mf">1.00000000e+00</span><span class="p">]</span>
+<span class="n">unlabeled_index</span> <span class="p">:</span> <span class="mi">6</span>
+<span class="n">unlabeled_us_score</span> <span class="p">:</span> <span class="mf">0.33333333333333337</span>
+<span class="n">unlabeled_probabilities</span> <span class="p">:</span> <span class="p">[</span><span class="mf">3.33333333e-01</span> <span class="mf">6.01617129e-36</span> <span class="mf">6.66666667e-01</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Tune hyperparameters</p></li>
+</ol>
+<p>There are some hyperparameters for phase diagram estimation methods (“LP” and “LS”).
+These are usually given default values, and we can obtain suggestions without adjusting them.
+On the other hand, we may be able to obtain better suggestions by adjusting.</p>
+<p>In AIPHAD, only the <span class="math notranslate nohighlight">\(\gamma\)</span> value of the rbf kernel can be modified.
+If we want to perform calculation with the value of <span class="math notranslate nohighlight">\(\gamma\)</span> set to 10, the calculation is performed by specifying as follows.
+Note that the default value of <span class="math notranslate nohighlight">\(\gamma\)</span> is 20.
+Since <span class="math notranslate nohighlight">\(\gamma\)</span> corresponds to the range of influence given by one training data,
+decreasing <span class="math notranslate nohighlight">\(\gamma\)</span> will affect farther away, increasing it will affect nearby.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span> <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="specifying-the-name-of-each-phase">
+<h2>Specifying the name of each phase<a class="headerlink" href="#specifying-the-name-of-each-phase" title="Permalink to this heading"></a></h2>
+<p>We can specify a name of the each phase.
+Let FCC be the name of the phase with index 0, HCP be the name of the phase with index 1, and BCC be the name of the phase with index 2.
+Specify as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                   <span class="n">phase_id_option</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;FCC&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;HCP&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;BCC&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+<p>If we use this option and the calculation according to 2-4 and 6 above is performed, the following results will be output.
+We can see that each phase is given a name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">belonging_index_FCC</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">belonging_X_FCC</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_FCC</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="n">belonging_index_HCP</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">belonging_X_HCP</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_HCP</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="n">belonging_index_BCC</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">belonging_X_BCC</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_BCC</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="proposal-when-one-experimental-condition-is-fixed">
+<h2>Proposal when one experimental condition is fixed<a class="headerlink" href="#proposal-when-one-experimental-condition-is-fixed" title="Permalink to this heading"></a></h2>
+<p>By fixing one experimental condition, the next experiment may be easily performed.
+For example, it may be easier to experiment by fixing the temperature and changing only the pressure.
+We can receive a proposal with one experimental condition fixed for the previous experiment.
+This option is only available when <code class="docutils literal notranslate"><span class="pre">proposal</span> <span class="pre">=</span> <span class="pre">1</span></code>.</p>
+<p>To use this option, we write the code as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                   <span class="n">parameter_constraint</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                   <span class="n">prev_point</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">]</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prev_point</span></code> : The previous experimental condition is specified.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parameter_constraint</span></code> : By setting it to True, one of the previous experimental conditions is fixed.</p></li>
+</ul>
+<p>If we specify this option and execute the calculation according to 2-5 above, we will get the following results.
+The next candidate point is [1.0, 1.0, 0.0].
+It can be confirmed that the proposed experimental condition is changed against we do not use this option.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proposal_index</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">proposal_X</span><span class="p">:</span> <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">proposal_us</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.33333333333333337</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="proposal-of-multiple-candidate-points">
+<h2>Proposal of multiple candidate points<a class="headerlink" href="#proposal-of-multiple-candidate-points" title="Permalink to this heading"></a></h2>
+<p>Multiple experimental conditions can be proposed.</p>
+<p>To use this option, the code is written as follows.
+It can be calculated by specifying the number of proposals in <code class="docutils literal notranslate"><span class="pre">proposal</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span>
+                   <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span>
+                   <span class="n">proposal</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                   <span class="n">multi_method</span> <span class="o">=</span> <span class="s2">&quot;OU&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">multi_method</span></code> : Select an algorithm that makes multiple proposals. “OU”: Proposals are obtained in descending order of uncertainty score. “NE”: Candidate points with large uncertainty scores and far apart are proposed. If nothing is specified, “OU” is selected by default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NE_k</span></code> : It should be specified as an integer value when “NE” is selected. Candidate points closer than the <code class="docutils literal notranslate"><span class="pre">NE_k</span></code> nearest from the proposed point will not be proposed. The default is 1. In this case, multiple closest candidate points will not be proposed.</p></li>
+</ul>
+<p>If we specify this option and execute the calculation according to 2-5 above, the following results will be output.
+The proposed experimental points point are [[0.0, 0.0, 0.0], [1.0, 0.0, 1.0]].</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proposal_index</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">proposal_X</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">proposal_us</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.33333333333333337</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>In addition, multiple candidate points with high probability of belonging to each phase can be proposed.</p>
+<p>The following results are obtained by executing the calculation according to 2-6 above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">belonging_index_0</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">belonging_X_0</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_0</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.3333333333333333</span><span class="p">]</span>
+<span class="n">belonging_index_1</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">belonging_X_1</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_1</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.707277081768123e-35</span><span class="p">]</span>
+<span class="n">belonging_index_2</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">belonging_X_2</span><span class="p">:</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]]</span>
+<span class="n">belonging_probability_2</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.6666666666666666</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter3.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_csv.html" class="btn btn-neutral float-right" title="Phase diagram construction using a csv file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_common.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/tutorial_common.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/tutorial_common.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/tutorial_common.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/tutorial_common.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

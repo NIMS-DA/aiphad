@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>aiphad module &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="aiphad_output module" href="aiphad_output.html" />
+    <link rel="prev" title="API Reference" href="api_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api_reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">aiphad module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#aiphad.aiphad.make_color_list"><code class="docutils literal notranslate"><span class="pre">make_color_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler"><code class="docutils literal notranslate"><span class="pre">pdc_sampler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.calculate"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.calculate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.cross_selection"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.cross_selection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.fit"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.make_data"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.make_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.make_data_labelbefore"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.make_data_labelbefore()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.make_label"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.make_label()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.make_label_list"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.make_label_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.output_res"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.output_res()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.postprocessing"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.postprocessing()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.preprocessing"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.preprocessing()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.us"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.us()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.us_EA"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.us_EA()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.us_LC"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.us_LC()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.us_MS"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.us_MS()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aiphad.aiphad.pdc_sampler.us_RS"><code class="docutils literal notranslate"><span class="pre">pdc_sampler.us_RS()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aiphad_output.html">aiphad_output module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">Acknowledgment</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="api_reference.html">API Reference</a></li>
+      <li class="breadcrumb-item active">aiphad module</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-aiphad.aiphad">
+<span id="aiphad-module"></span><h1>aiphad module<a class="headerlink" href="#module-aiphad.aiphad" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="aiphad.aiphad.make_color_list">
+<span class="sig-prename descclassname"><span class="pre">aiphad.aiphad.</span></span><span class="sig-name descname"><span class="pre">make_color_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_score_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#make_color_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.make_color_list" title="Permalink to this definition"></a></dt>
+<dd><p>create color list for figure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>u_score_list</strong> (<em>numpy.ndarray</em>) – uncertainty score</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>hex_color_list</strong> – list of hex color</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aiphad.aiphad.</span></span><span class="sig-name descname"><span class="pre">pdc_sampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase_id_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proposal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_constraint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NE_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>pdc_sampler instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page_type</strong> (<em>string</em>) – specify page type from “two_variables”, “three_variables”, “ternary_section”, “ternary”, and “quaternary_section”</p></li>
+<li><p><strong>input_data</strong> (<em>numpy.ndarray</em>) – label for the phase (“-1” is used at the point with no label)</p></li>
+<li><p><strong>estimation</strong> (<em>string</em>) – specify estimation method from ‘LP’ ,’LS’</p></li>
+<li><p><strong>sampling</strong> (<em>string</em>) – specify sampling method from ‘LC’, ‘MS’, ‘EA’, and ‘RS’</p></li>
+<li><p><strong>phase_id_option</strong> (<em>dict</em>) – label name. e.g. {“Fe”: 0, “Cr”: 1, “Ni”: 2}</p></li>
+<li><p><strong>proposal</strong> (<em>integer</em>) – number of proposals</p></li>
+<li><p><strong>parameter_constraint</strong> (<em>bool</em>) – whether parameter constraint is used / not used</p></li>
+<li><p><strong>prev_point</strong> (<em>list</em>) – previous experimental point</p></li>
+<li><p><strong>multi_method</strong> (<em>string</em>) – specify multi uncertainty score option from ‘OU’ or ‘NE’</p></li>
+<li><p><strong>NE_k</strong> (<em>integer</em>) – exclusion of NE_k nearest neighbors from proposals</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.calculate" title="Permalink to this definition"></a></dt>
+<dd><p>calculate with machine learning method (label spreading or label propagation) which is specified by user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>lp_model</strong> (<em>sklearn.semi_supervised._label_spreading.LabelSpreading</em>)</p></li>
+<li><p><em>or</em></p></li>
+<li><p><em>sklearn.semi_supervised._label_propagation.LabelPropagation</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.cross_selection">
+<span class="sig-name descname"><span class="pre">cross_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prev_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unlabeled_index_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.cross_selection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.cross_selection" title="Permalink to this definition"></a></dt>
+<dd><p>use option to fix one variable for proposals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prev_data</strong> (<em>numpy.ndarray</em>) – previous experimental point</p></li>
+<li><p><strong>unlabeled_index_list</strong> (<em>list</em>) – indexces of uncertain points</p></li>
+<li><p><strong>data_list</strong> (<em>numpy.ndarray</em>) – all data points</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>candidate_index_list</strong> (<em>list</em>) – Candicate indexes will be return if there are candidate points such that one variable is not changed.</p></li>
+<li><p><strong>unlabeled_index_list</strong> (<em>list</em>) – Unlabeled indexes will be return if there are no candidate points such that one variable is not changed.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.fit" title="Permalink to this definition"></a></dt>
+<dd><p>perform phase diagram estimation using the label propagation method for inputted X and y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>numpy.ndarray</em>) – data points in phase diagram</p></li>
+<li><p><strong>y</strong> (<em>numpy.ndarray</em>) – label for the phase (“-1” is used at the point with no label)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.make_data">
+<span class="sig-name descname"><span class="pre">make_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.make_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.make_data" title="Permalink to this definition"></a></dt>
+<dd><p>create label and numeric data from input file or array then
+convert data list (e.g. a, b, c points to x, y points)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reader</strong> (<em>_csv.reader</em>) – all inputs. (input from csv file or array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.make_data_labelbefore">
+<span class="sig-name descname"><span class="pre">make_data_labelbefore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.make_data_labelbefore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.make_data_labelbefore" title="Permalink to this definition"></a></dt>
+<dd><p>create label and numeric data from input file or array</p>
+<p>transform from compositions to Cartesian coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reader</strong> (<em>_csv.reader</em>) – all inputs (input from csv file or array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.make_label">
+<span class="sig-name descname"><span class="pre">make_label</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.make_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.make_label" title="Permalink to this definition"></a></dt>
+<dd><p>create label automatically depending on input file or value, specifined label or not</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.make_label_list">
+<span class="sig-name descname"><span class="pre">make_label_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase_id_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list_text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.make_label_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.make_label_list" title="Permalink to this definition"></a></dt>
+<dd><p>make label data before learning</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phase_id_dict</strong> (<em>dict</em>) – list of label</p></li>
+<li><p><strong>label_list_text</strong> (<em>dist</em>) – data of label (”” is used for no label, “”)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.output_res">
+<span class="sig-name descname"><span class="pre">output_res</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.output_res"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.output_res" title="Permalink to this definition"></a></dt>
+<dd><p>make variables for outputs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.postprocessing">
+<span class="sig-name descname"><span class="pre">postprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lp_model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.postprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.postprocessing" title="Permalink to this definition"></a></dt>
+<dd><p>perform output processing for specified model attributes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.preprocessing">
+<span class="sig-name descname"><span class="pre">preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.preprocessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.preprocessing" title="Permalink to this definition"></a></dt>
+<dd><p>make learning data and standardized data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.us">
+<span class="sig-name descname"><span class="pre">us</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.us"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.us" title="Permalink to this definition"></a></dt>
+<dd><p>calculate uncertainty score by EA, LC, MS, and RS method which is specified by user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.us_EA">
+<span class="sig-name descname"><span class="pre">us_EA</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.us_EA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.us_EA" title="Permalink to this definition"></a></dt>
+<dd><p>calculate uncertainty score by EA</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.us_LC">
+<span class="sig-name descname"><span class="pre">us_LC</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.us_LC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.us_LC" title="Permalink to this definition"></a></dt>
+<dd><p>calculate uncertainty score by LC</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.us_MS">
+<span class="sig-name descname"><span class="pre">us_MS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.us_MS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.us_MS" title="Permalink to this definition"></a></dt>
+<dd><p>calculate uncertainty score by MS</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aiphad.aiphad.pdc_sampler.us_RS">
+<span class="sig-name descname"><span class="pre">us_RS</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/aiphad/aiphad.html#pdc_sampler.us_RS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#aiphad.aiphad.pdc_sampler.us_RS" title="Permalink to this definition"></a></dt>
+<dd><p>calculate uncertainty score by RS</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_reference.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="aiphad_output.html" class="btn btn-neutral float-right" title="aiphad_output module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/aiphad.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/aiphad.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/aiphad.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/aiphad.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/aiphad.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

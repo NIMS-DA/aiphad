@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic usage &mdash; AIPHAD 1.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bm": ["{\\boldsymbol{#1}}", 1]}}})</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="chapter3.html" />
+    <link rel="prev" title="Introduction" href="chapter1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html">
+            <img src="_static/aiphad.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials_search_space.html">Materials Search Space Generator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgement.html">Acknowledgment</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIPHAD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Basic usage</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><section id="basic-usage">
+<h1>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading"></a></h1>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this heading"></a></h2>
+<section id="required-packages">
+<h3>Required packages<a class="headerlink" href="#required-packages" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Python &gt;= 3.6</p></li>
+<li><p>numpy == 1.18.5</p></li>
+<li><p>matplotlib == 3.2.2</p></li>
+<li><p>scipy == 1.5.0</p></li>
+<li><p>scikit-learn == 0.23.1</p></li>
+</ul>
+</section>
+<section id="install-procedures">
+<h3>Install procedures<a class="headerlink" href="#install-procedures" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p>From <code class="docutils literal notranslate"><span class="pre">PyPI</span></code> (recommended)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install aiphad
+</pre></div>
+</div>
+<ul>
+<li><p>Required packages such as NumPy will also be installed at the same time.</p></li>
+<li><p>If you add the <code class="docutils literal notranslate"><span class="pre">--user</span></code> option, it will be installed under the user’s home directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 install --user aiphad
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>From source (for developers)</p>
+<ol class="arabic">
+<li><p>Download or clone the github repository</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/
+</pre></div>
+</div>
+</li>
+<li><p>Install</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd aiphad
+$ pip3 install --user ./
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="uninstall">
+<h3>Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Execute the following command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip uninstall aiphad
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="structures-of-aiphad">
+<h2>Structures of AIPHAD<a class="headerlink" href="#structures-of-aiphad" title="Permalink to this heading"></a></h2>
+<p>AIPHAD is structured as follows (up to the third level is displayed).:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|--</span><span class="n">aiphad</span>
+<span class="o">|</span>    <span class="o">|--</span><span class="n">aiphad</span><span class="o">.</span><span class="n">pdc_sampler</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">fit</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">us</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">cross_selection</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">make_data</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">make_label</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">preprocessing</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">calculate</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">postprocessing</span>
+<span class="o">|</span>    <span class="o">|</span>    <span class="o">|--</span><span class="n">us_</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>Each module is created as follows.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.fit</span></code> : Phase estimation module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.us</span></code> : Uncertanty score module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.cross_selection</span></code> : Module for the fixed one variable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.make_data</span></code> : Data loading module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.make_label</span></code> : Label preparation module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.preprocessing</span></code> : Preprocessing module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.calculate</span></code> : Module to calculate label propagation or label spreading</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.postprocessing</span></code> : Postprocessing module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aiphad.pdc_sampler.us_*</span></code> : Module to calculate uncertainty score depending on the methods（in <code class="docutils literal notranslate"><span class="pre">*</span></code> , LC, MS, EA, or RS are assigined.）</p></li>
+</ul>
+<p>The detail of module is shown in <a class="reference internal" href="api_reference.html"><span class="doc">API Reference</span></a>.</p>
+</section>
+<section id="calculation-flow-in-pdc">
+<h2>Calculation flow in PDC<a class="headerlink" href="#calculation-flow-in-pdc" title="Permalink to this heading"></a></h2>
+<p>The PDC algorithm can reduce the number of experiments needed to investigate phase diagrams, and also allows for efficient discovery of unknown phases.
+The PDC algorithm performs uncertainty sampling according to the following procedure.
+The detals of each procedure is explained in <a class="reference internal" href="chapter3.html"><span class="doc">Tutorial</span></a> and <a class="reference internal" href="api_reference.html"><span class="doc">API Reference</span></a>.</p>
+<ol class="arabic simple">
+<li><p>Define the region of the phase diagram</p></li>
+</ol>
+<p>The parameter space to investigate the phase diagram is defined, and this parameter space is descretized.
+The number of descretized points in the phase diagram is <span class="math notranslate nohighlight">\(N\)</span>.
+If the experiments for <span class="math notranslate nohighlight">\(N\)</span> experimental conditions are finished,
+the phase diagram is completely obtained.
+When the position vector in the phase diagram is defined as <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^d\)</span>,
+the candidates of experimental conditions is represented as <span class="math notranslate nohighlight">\(\mathbf{\{ x_\it i \}_{i= \rm 1,\ldots ,N} }\)</span>.
+Here, the arbitrary dimensiion of phase diagram <span class="math notranslate nohighlight">\(d\)</span> can be used in PDC algorithm.</p>
+<p>We consider the case that, from <span class="math notranslate nohighlight">\(N\)</span> candidates,
+the experiments for <span class="math notranslate nohighlight">\(M\)</span> candidates were finished, and the types of phases at the <span class="math notranslate nohighlight">\(M\)</span> expereimental conditions were identified.
+The types of phases found at this stage are assigned integer indexes as a label for training.
+For example, if the number of the found phases is <span class="math notranslate nohighlight">\(P\)</span>,
+the indexes of labels are defined as <span class="math notranslate nohighlight">\(p = 1, \ldots ,P\)</span>.
+Here, for the experimental conditions that have not yet been performed, the label <span class="math notranslate nohighlight">\(-1\)</span> is assigned.</p>
+<ol class="arabic simple" start="2">
+<li><p>Phase estimation</p></li>
+</ol>
+<p>For each point in the phase diagram that has not yet been identified, the belonging probability <span class="math notranslate nohighlight">\(P(p|\mathbf{x})\)</span> to the phase which are already found is estimated.
+Here, the label propagation method is used,
+and PDC algorithm can select the method from the following two methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LP</span></code> : label propagation method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LS</span></code> : label spreading method</p></li>
+</ul>
+</div></blockquote>
+<p>The label of a point for which a phase is already identified is not changed in <code class="docutils literal notranslate"><span class="pre">LP</span></code>, whereas in <code class="docutils literal notranslate"><span class="pre">LS</span></code> , the label can change depending on the surrounding environment.
+Using this probability <span class="math notranslate nohighlight">\(P(p|\mathbf{x})\)</span>, an estimated phase diagram can be obtained if the phase with the maximum probability at each point is regarded as the estimated phase.</p>
+<ol class="arabic simple" start="3">
+<li><p>Uncertainty score</p></li>
+</ol>
+<p>Using <span class="math notranslate nohighlight">\(P(p|\mathbf{x})\)</span>, an uncertainty score is calculated.
+The point with the largest uncertainty score (the most uncertain point in the phase diagram) is proposed as a candidate point for the next experimental condition.
+In PDC, the following four types of uncertainty scores are available.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LC</span></code> : least confident method ( <span class="math notranslate nohighlight">\(1-P(p_1|\mathbf{x})\)</span> )</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EA</span></code> : entropy-based approach method ( <span class="math notranslate nohighlight">\(1-[P(p_1|\mathbf{x})-P(p_2|\mathbf{x})]\)</span> )</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MS</span></code> : margin sampling method ( <span class="math notranslate nohighlight">\(- \sum_{p} P(p|\mathbf{x})\log {P(p|\mathbf{x})}\)</span> )</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RS</span></code> : random sampling method</p></li>
+</ul>
+</div></blockquote>
+<p>Here, <span class="math notranslate nohighlight">\(P(p_1|\mathbf{x})\)</span> and  <span class="math notranslate nohighlight">\(P(p_2|\mathbf{x})\)</span> are the largest and second largest probability at each point.
+Multiple candidates can also be proposed.</p>
+<ol class="arabic simple" start="4">
+<li><p>Experiment</p></li>
+</ol>
+<p>The phase is identified by performing an experiment on the points selected in Step 3.
+The index of the identified phase is assighned from <span class="math notranslate nohighlight">\(p = 1, \ldots ,P\)</span>.
+If a new phase is explored, an index representing the new phase is added as <span class="math notranslate nohighlight">\(p = 1, \ldots ,P, P + 1\)</span>, and <span class="math notranslate nohighlight">\(P + 1\)</span> is specified as the label of new data.</p>
+<p>The new data adds to the training data, and by repeating Steps 2 to 4, efficiently investigation of a phase diagram can be performed.
+The above flow is illustrated following figure.</p>
+<figure class="align-center">
+<img alt="_images/cycle.png" src="_images/cycle.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter1.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter3.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023-, AIPHAD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Read the Docs</span>
+    v: 1.0.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Languages</dt>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/chapter2.html">en</a>
+        </strong>
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../1.0.0/ja/chapter2.html">ja</a>
+        
+        </dd>
+      
+
+      <dt>Branches</dt>
+      
+        
+        <dd>
+        
+          <a href="../../develop/en/chapter2.html">develop</a>
+        
+        </dd>
+      
+        
+        <dd>
+        
+          <a href="../../master/en/chapter2.html">master</a>
+        
+        </dd>
+      
+        
+        <dd>
+        <strong>
+          <a href="../../1.0.0/en/chapter2.html">1.0.0</a>
+        </strong>
+        </dd>
+      
+
+      <dt>Tags</dt>
+      
+
+    </dl>
+  </div>
+</div>
+
+#}<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

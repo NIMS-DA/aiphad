@@ -258,12 +258,19 @@ Using these information, we can implement the original uncertainty score.</p>
 <p>There are some hyperparameters for phase diagram estimation methods (“LP” and “LS”).
 These are usually given default values, and we can obtain suggestions without adjusting them.
 On the other hand, we may be able to obtain better suggestions by adjusting.</p>
-<p>In AIPHAD, only the <span class="math notranslate nohighlight">\(\gamma\)</span> value of the rbf kernel can be modified.
+<p>In “LP” and “LS”, the <span class="math notranslate nohighlight">\(\gamma\)</span> value of the rbf kernel can be modified.
 If we want to perform calculation with the value of <span class="math notranslate nohighlight">\(\gamma\)</span> set to 10, the calculation is performed by specifying as follows.
 Note that the default value of <span class="math notranslate nohighlight">\(\gamma\)</span> is 20.
 Since <span class="math notranslate nohighlight">\(\gamma\)</span> corresponds to the range of influence given by one training data,
 decreasing <span class="math notranslate nohighlight">\(\gamma\)</span> will affect farther away, increasing it will affect nearby.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span> <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition, for “LS”, there is hyperparameter <span class="math notranslate nohighlight">\(\alpha\)</span> which determines the probability where the label of labeled data is changed.
+This value is specified in 0 &lt; <span class="math notranslate nohighlight">\(\alpha\)</span> &lt; 1.
+If we want to perform calculation with the value of <span class="math notranslate nohighlight">\(\alpha\)</span> set to 0.8, the calculation is performed by specifying as follows.
+In “LS”, both <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span> can be specified.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LS&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span> <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

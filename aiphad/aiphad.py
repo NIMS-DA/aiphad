@@ -37,7 +37,7 @@ class pdc_sampler:
         exclusion of NE_k nearest neighbors from proposals
     """
 
-    def __init__(self, page_type=None, input_data=None, estimation=None, gamma=None,\
+    def __init__(self, page_type=None, input_data=None, estimation=None, gamma=None, alpha=None,\
                  sampling=None, phase_id_option=None, proposal = None,\
                  parameter_constraint = None, prev_point = None, \
                  multi_method = None, NE_k = None):
@@ -46,6 +46,7 @@ class pdc_sampler:
         self._page_type = page_type
         self._LP_algorithm = estimation
         self.gamma = gamma
+        self.alpha = alpha
         self._US_strategy = sampling
         self.phase_id_dict = 0
 
@@ -398,10 +399,14 @@ class pdc_sampler:
 
         if self._LP_algorithm == 'LS':
             
-            if self.gamma == None:
+            if self.gamma == None and self.alpha == None:
                 lp_model = sklearn.semi_supervised.LabelSpreading()
-            else:
+            elif self.gamma == None:
+                lp_model = sklearn.semi_supervised.LabelSpreading(alpha = self.alpha)
+            elif self.alpha == None:
                 lp_model = sklearn.semi_supervised.LabelSpreading(gamma = self.gamma)
+            else:
+                lp_model = sklearn.semi_supervised.LabelSpreading(gamma = self.gamma, alpha = self.alpha)
 
         elif self._LP_algorithm == 'LP':
 

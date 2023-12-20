@@ -258,12 +258,20 @@ numpyも使用するためimportします．</p>
 <p>相図推定手法の”LP”, “LS”ではいくつかのハイパーパラメタがあります．
 これらは通常デフォルト値が決められており，調整しなくても提案を受けることができます．
 一方で，調整することで，より良い提案を受けることができる場合があります．</p>
-<p>rbfカーネルの <span class="math notranslate nohighlight">\(\gamma\)</span> 値のみ，変更した計算を実行することができます．
+<p>“LP”, “LS”では，rbfカーネルの <span class="math notranslate nohighlight">\(\gamma\)</span> 値を，変更した計算を実行することができます．
 <span class="math notranslate nohighlight">\(\gamma\)</span> の値を10にして計算を行いたい場合，以下のように指定することで計算が行われます．
 またデフォルト値は，20となっています．
 <span class="math notranslate nohighlight">\(\gamma\)</span> は，一つの訓練データが与える影響の範囲に対応しているため，
 <span class="math notranslate nohighlight">\(\gamma\)</span> を小さくすると遠くまで影響を及ぼし，大きくすると近くの影響に留まります．</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LP&quot;</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span> <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>“LS”では，ラベルつきデータのラベルが変わる確率を定義する <span class="math notranslate nohighlight">\(\alpha\)</span> というハイパーパラメータがあります．
+これは，  0 &lt; <span class="math notranslate nohighlight">\(\alpha\)</span> &lt; 1 の値を指定することができます．
+<span class="math notranslate nohighlight">\(\alpha\)</span> の値を0.8にして計算を行いたい場合，以下のように指定することで計算が行われます．
+またデフォルト値は，0.2となっています．
+“LS”では，同時に <span class="math notranslate nohighlight">\(\gamma\)</span> の値も指定することができます．</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pdc</span>  <span class="o">=</span> <span class="n">pdc_sampler</span><span class="p">(</span><span class="n">estimation</span> <span class="o">=</span> <span class="s2">&quot;LS&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="s2">&quot;LC&quot;</span><span class="p">,</span> <span class="n">proposal</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
